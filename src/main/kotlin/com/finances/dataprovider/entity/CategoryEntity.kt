@@ -14,9 +14,9 @@ import javax.persistence.Table
 @DynamicUpdate
 data class CategoryEntity (
     @Id
-    @GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
-    @GeneratedValue(generator = "UUIDGenerator")
-    val id : UUID,
+    //@GenericGenerator(name = "UUIDGenerator", strategy = "uuid4")
+    //@GeneratedValue(generator = "UUIDGenerator")
+    val id : String,
     val name : String
 )
 

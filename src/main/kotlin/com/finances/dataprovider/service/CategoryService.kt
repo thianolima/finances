@@ -7,6 +7,7 @@ import com.finances.dataprovider.entity.toCategory
 import com.finances.dataprovider.entity.toCategoryEntity
 import com.finances.dataprovider.repository.CategoryRepository
 import org.springframework.stereotype.Service
+import java.util.*
 import javax.transaction.Transactional
 
 @Service
@@ -18,4 +19,12 @@ class CategoryService(private val repository : CategoryRepository) : CategoryGat
     override fun existsByName(name: String) =
         repository.findByName(name).isPresent
 
+    override fun delete(id : String) =
+        repository.deleteById(id.toString())
+
+    override fun findById(id : String) =
+        repository.findById(id.toString())
+            .map {
+                Category(it.id, it.name)
+            }
 }

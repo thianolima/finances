@@ -1,6 +1,7 @@
 package com.finances.entrypoint.exception
 
 import com.finances.core.exception.EntityAlreadyExistsException
+import com.finances.core.exception.EntityNotFoundException
 import com.finances.entrypoint.response.ErrorResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,4 +15,8 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler(){
     @ExceptionHandler(EntityAlreadyExistsException::class)
     fun alreadyExists(ex: EntityAlreadyExistsException) =
         ResponseEntity(ErrorResponse(ex.message!!), HttpStatus.BAD_REQUEST)
+
+    @ExceptionHandler(EntityNotFoundException::class)
+    fun notFound(ex: EntityNotFoundException) =
+        ResponseEntity(ErrorResponse(ex.message!!), HttpStatus.NOT_FOUND)
 }
