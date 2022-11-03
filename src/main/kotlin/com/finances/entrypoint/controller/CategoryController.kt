@@ -3,6 +3,7 @@ package com.finances.entrypoint.controller
 import com.finances.core.model.Category
 import com.finances.core.usecase.CreateCategoryUseCase
 import com.finances.core.usecase.DeleteCategoryUseCase
+import com.finances.core.usecase.UpdateCategoryUseCase
 import com.finances.entrypoint.request.CategoryRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -20,7 +21,9 @@ import java.util.*
 @RequestMapping("/categories")
 class CategoryController(
     val saveCategoryUseCase : CreateCategoryUseCase,
-    val deleteCategoryUseCase : DeleteCategoryUseCase) {
+    val deleteCategoryUseCase : DeleteCategoryUseCase,
+    val updateCategoryUseCase : UpdateCategoryUseCase,
+) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     fun create(@RequestBody request : CategoryRequest) =
@@ -31,4 +34,8 @@ class CategoryController(
     fun delete(@PathVariable id : String) =
         deleteCategoryUseCase.execute(id)
 
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/{id}")
+    fun update(@PathVariable id : String, @RequestBody request : CategoryRequest) =
+        updateCategoryUseCase.execute(Category(id, request.name))
 }

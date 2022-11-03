@@ -1,13 +1,11 @@
 package com.finances.dataprovider.service
 
-import com.finances.core.exception.DomainException
 import com.finances.core.gateway.CategoryGateway
 import com.finances.core.model.Category
 import com.finances.dataprovider.entity.toCategory
 import com.finances.dataprovider.entity.toCategoryEntity
 import com.finances.dataprovider.repository.CategoryRepository
 import org.springframework.stereotype.Service
-import java.util.*
 import javax.transaction.Transactional
 
 @Service
@@ -27,4 +25,8 @@ class CategoryService(private val repository : CategoryRepository) : CategoryGat
             .map {
                 Category(it.id, it.name)
             }
+
+    override fun update(category: Category) =
+        repository.save(category.toCategoryEntity()).toCategory()
+
 }
