@@ -8,5 +8,4 @@ interface CategoryGateway {
     fun existsByName(name : String) : Boolean
     fun delete(id : String)
     fun findById(id : String) : Optional<Category>
-    fun update(category : Category) : Category
 }

@@ -4,18 +4,11 @@ import com.finances.core.model.Category
 import com.finances.core.usecase.CreateCategoryUseCase
 import com.finances.core.usecase.DeleteCategoryUseCase
 import com.finances.core.usecase.UpdateCategoryUseCase
-import com.finances.entrypoint.request.CategoryRequest
 import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.util.*
+import javax.validation.Valid
+import javax.validation.constraints.NotBlank
 
 @RestController
 @RequestMapping("/categories")
@@ -26,7 +19,7 @@ class CategoryController(
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    fun create(@RequestBody request : CategoryRequest) =
+    fun create(@Valid @RequestBody request : Request) =
         saveCategoryUseCase.execute(Category(UUID.randomUUID().toString(), request.name))
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -36,6 +29,10 @@ class CategoryController(
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
-    fun update(@PathVariable id : String, @RequestBody request : CategoryRequest) =
+    fun update(@PathVariable id : String, @Valid @RequestBody request : Request) =
         updateCategoryUseCase.execute(Category(id, request.name))
+
+    data class Request (@field:NotBlank val name : String)
+
+    data class Response (val id : String , val name : String)
 }

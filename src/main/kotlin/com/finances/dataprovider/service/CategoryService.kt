@@ -16,7 +16,7 @@ class CategoryService(private val repository : CategoryRepository) : CategoryGat
 
     override fun existsByName(name: String) =
         repository.findByName(name).isPresent
-
+    @Transactional
     override fun delete(id : String) =
         repository.deleteById(id.toString())
 
@@ -25,8 +25,4 @@ class CategoryService(private val repository : CategoryRepository) : CategoryGat
             .map {
                 Category(it.id, it.name)
             }
-
-    override fun update(category: Category) =
-        repository.save(category.toCategoryEntity()).toCategory()
-
 }
