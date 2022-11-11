@@ -1,4 +1,4 @@
-package com.finances.entrypoint.exception
+package com.finances.infrastructure.entrypoint.exception
 
 import com.finances.core.exception.EntityAlreadyExistsException
 import com.finances.core.exception.EntityNotFoundException
@@ -27,7 +27,7 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler(){
     override fun handleMethodArgumentNotValid(ex: MethodArgumentNotValidException, headers: HttpHeaders, status: HttpStatus, request: WebRequest): ResponseEntity<Any> =
         handleExceptionInternal(
             ex,
-            ex.bindingResult.fieldErrors.map{Response("${it.field}: ${it.defaultMessage}")}.first(),
+            ex.bindingResult.fieldErrors.map{ Response("${it.field}: ${it.defaultMessage}") }.first(),
             headers,
             status,
             request

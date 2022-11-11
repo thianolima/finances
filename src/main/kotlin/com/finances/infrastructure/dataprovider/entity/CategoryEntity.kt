@@ -1,11 +1,8 @@
-package com.finances.dataprovider.entity
+package com.finances.infrastructure.dataprovider.entity
 
 import com.finances.core.model.Category
 import org.hibernate.annotations.DynamicUpdate
-import org.hibernate.annotations.GenericGenerator
-import java.util.UUID
 import javax.persistence.Entity
-import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Table
 
