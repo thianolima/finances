@@ -1,4 +1,4 @@
-package com.finances.infrastructure.configuration.spring
+package com.finances.infrastructure.configuration.app
 
 import com.finances.infrastructure.dataprovider.service.CategoryService
 import com.finances.core.usecase.CreateCategoryUseCase
