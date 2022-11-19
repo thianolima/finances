@@ -7,7 +7,9 @@ class DeleteCategoryUseCase(private val categoryPort: CategoryPort) {
 
     private val MSG_NOT_FOUND = "Categoria não encontrada!"
 
-    fun execute(id: String) {
-        categoryPort.delete(id)
-    }
+    fun execute(id: String) =
+        when(categoryPort.findById(id).isPresent){
+            true -> categoryPort.delete(id)
+            false -> throw EntityNotFoundException(MSG_NOT_FOUND)
+        }
 }
