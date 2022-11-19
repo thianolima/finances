@@ -1,3 +1,3 @@
 package com.finances.core.exception
 
-class EntityNotFoundException(message : String) : RuntimeException(message)
+class EntityNotFoundException(message: String) : RuntimeException(message)

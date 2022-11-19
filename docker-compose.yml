@@ -7,17 +7,17 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      PGDATA: /data/postgres
+      POSTGRES_DB: financesdb
     volumes:
       - postgres:/data/postgres
     ports:
       - "5432:5432"
     networks:
-      - finance
+      - finances
     restart: unless-stopped
 
 networks:
-  finance:
+  finances:
     driver: bridge
 
 volumes:

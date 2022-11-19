@@ -15,9 +15,9 @@ class UpdateCategoryUseCase(private val categoryPort : CategoryPort) {
             false -> throw EntityAlreadyExistsException(MSG_EXISTS)
         }
 
-    private fun validate(category: Category) : Boolean =
-        when (categoryPort.findById(category.id).isPresent) {
-            true -> !categoryPort.existsByName(category.name)
-            false -> throw EntityNotFoundException(MSG_NOT_FOUND)
-        }
+    private fun validate(category: Category) : Boolean = true
+//        when (categoryPort.findById(category.id).isPresent) {
+//            true -> !categoryPort.existsByName(category.name)
+//            false -> throw EntityNotFoundException(MSG_NOT_FOUND)
+//        }
 }

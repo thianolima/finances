@@ -7,5 +7,5 @@ import java.util.*
 
 @Repository
 interface CategoryRepository : JpaRepository<CategoryEntity, String> {
-    fun findByName(name:String) : Optional<CategoryEntity>
+    fun findByName(name: String): Optional<CategoryEntity>
 }
