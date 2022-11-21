@@ -1,4 +1,4 @@
-package com.finances.core.usecase
+package com.finances.core.usecase.category
 
 import com.finances.core.exception.EntityAlreadyExistsException
 import com.finances.core.exception.EntityNotFoundException

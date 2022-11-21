@@ -1,7 +1,10 @@
 package com.finances.infrastructure.dataprovider.entity
 
 import org.hibernate.annotations.DynamicUpdate
+import org.hibernate.annotations.GenericGenerator
+import java.util.UUID
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.Table
 
@@ -10,8 +13,6 @@ import javax.persistence.Table
 @DynamicUpdate
 data class CategoryEntity(
     @Id
-    //@GenericGenerator(name = "UUIDGenerator", strategy = "uuid4")
-    //@GeneratedValue(generator = "UUIDGenerator")
-    val id: String,
-    val name: String
+    var id: String,
+    var name: String
 )
