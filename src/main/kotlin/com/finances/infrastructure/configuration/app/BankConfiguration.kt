@@ -4,25 +4,25 @@ import com.finances.core.usecase.bank.CreateBankUseCase
 import com.finances.core.usecase.bank.DeleteBankUseCase
 import com.finances.core.usecase.bank.GetBankByIdUseCase
 import com.finances.core.usecase.bank.UpdateBankUseCase
-import com.finances.infrastructure.dataprovider.service.BankService
+import com.finances.infrastructure.dataprovider.adapter.BankDatabaseAdapter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
 class BankConfiguration {
     @Bean
-    fun createBankUseCase(bankService: BankService) =
-        CreateBankUseCase(bankService)
+    fun createBankUseCase(bankRepositoryAdapter: BankDatabaseAdapter) =
+        CreateBankUseCase(bankRepositoryAdapter)
 
     @Bean
-    fun deleteBankUseCase(bankService: BankService) =
-        DeleteBankUseCase(bankService)
+    fun deleteBankUseCase(bankRepositoryAdapter: BankDatabaseAdapter) =
+        DeleteBankUseCase(bankRepositoryAdapter)
 
     @Bean
-    fun updateBankUseCase(bankService: BankService) =
-        UpdateBankUseCase(bankService)
+    fun updateBankUseCase(bankRepositoryAdapter: BankDatabaseAdapter) =
+        UpdateBankUseCase(bankRepositoryAdapter)
 
     @Bean
-    fun getBankByIdUseCase(bankService: BankService) =
-        GetBankByIdUseCase(bankService)
+    fun getBankByIdUseCase(bankRepositoryAdapter: BankDatabaseAdapter) =
+        GetBankByIdUseCase(bankRepositoryAdapter)
 }

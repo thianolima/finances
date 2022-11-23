@@ -1,8 +1,8 @@
 version: '3.5'
 
 services:
-  db:
-    container_name: postgres_container
+  postgres:
+    container_name: postgres
     image: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -16,9 +16,28 @@ services:
       - finances
     restart: unless-stopped
 
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:latest
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=fakeaccess
+      - AWS_SECRET_KEY_ID=fakesecret
+      - SERVICES=sqs, secretmanager, ssm, s3
+      - LAMBDA_EXECUTOR=docker
+      - DATA_DIR=/tmp/localstack/data
+      - DEBU=1
+    ports:
+      - "4566:4566"
+    networks:
+      - finances
+    volumes:
+      - localstack:/tmp/localstack
+
 networks:
   finances:
     driver: bridge
 
 volumes:
   postgres:
+  localstack:

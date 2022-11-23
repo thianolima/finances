@@ -1,15 +1,15 @@
-package com.finances.infrastructure.dataprovider.service
+package com.finances.infrastructure.dataprovider.adapter
 
 import com.finances.core.model.Bank
-import com.finances.core.port.input.BankPort
+import com.finances.core.port.BankDatabasePort
 import com.finances.infrastructure.dataprovider.mapper.toEntity
 import com.finances.infrastructure.dataprovider.mapper.toModel
 import com.finances.infrastructure.dataprovider.repository.BankRepository
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 import javax.transaction.Transactional
 
-@Service
-class BankService(private val repository: BankRepository) : BankPort {
+@Component
+class BankDatabaseAdapter(private val repository: BankRepository) : BankDatabasePort {
 
     @Transactional
     override fun save(bank: Bank) =

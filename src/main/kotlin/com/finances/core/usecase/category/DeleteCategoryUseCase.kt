@@ -1,15 +1,15 @@
 package com.finances.core.usecase.category
 
 import com.finances.core.exception.EntityNotFoundException
-import com.finances.core.port.input.CategoryPort
+import com.finances.core.port.CategoryDatabasePort
 
-class DeleteCategoryUseCase(private val categoryPort: CategoryPort) {
+class DeleteCategoryUseCase(private val categoryDatabasePort: CategoryDatabasePort) {
 
     private val MSG_NOT_FOUND = "Categoria não encontrada!"
 
     fun execute(id: String) =
-        when(categoryPort.findById(id).isPresent){
-            true -> categoryPort.delete(id)
+        when(categoryDatabasePort.findById(id).isPresent){
+            true -> categoryDatabasePort.delete(id)
             false -> throw EntityNotFoundException(MSG_NOT_FOUND)
         }
 }

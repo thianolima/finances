@@ -4,25 +4,25 @@ import com.finances.core.usecase.category.CreateCategoryUseCase
 import com.finances.core.usecase.category.DeleteCategoryUseCase
 import com.finances.core.usecase.category.GetCategoryByIdUseCase
 import com.finances.core.usecase.category.UpdateCategoryUseCase
-import com.finances.infrastructure.dataprovider.service.CategoryService
+import com.finances.infrastructure.dataprovider.adapter.CategoryDatabaseAdapter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
 class CategoryConfiguration {
     @Bean
-    fun createCategoryUseCase(categoryService: CategoryService) =
-        CreateCategoryUseCase(categoryService)
+    fun createCategoryUseCase(categoryDatabaseAdapter: CategoryDatabaseAdapter) =
+        CreateCategoryUseCase(categoryDatabaseAdapter)
 
     @Bean
-    fun deleteCategoryUseCase(categoryService: CategoryService) =
-        DeleteCategoryUseCase(categoryService)
+    fun deleteCategoryUseCase(categoryDatabaseAdapter: CategoryDatabaseAdapter) =
+        DeleteCategoryUseCase(categoryDatabaseAdapter)
 
     @Bean
-    fun updateCategoryUseCase(categoryService: CategoryService) =
-        UpdateCategoryUseCase(categoryService)
+    fun updateCategoryUseCase(categoryDatabaseAdapter: CategoryDatabaseAdapter) =
+        UpdateCategoryUseCase(categoryDatabaseAdapter)
 
     @Bean
-    fun getCategoryByIdUseCase(categoryService: CategoryService) =
-        GetCategoryByIdUseCase(categoryService)
+    fun getCategoryByIdUseCase(categoryDatabaseAdapter: CategoryDatabaseAdapter) =
+        GetCategoryByIdUseCase(categoryDatabaseAdapter)
 }

@@ -1,15 +1,15 @@
-package com.finances.infrastructure.dataprovider.service
+package com.finances.infrastructure.dataprovider.adapter
 
 import com.finances.core.model.Category
-import com.finances.core.port.input.CategoryPort
+import com.finances.core.port.CategoryDatabasePort
 import com.finances.infrastructure.dataprovider.mapper.toEntity
 import com.finances.infrastructure.dataprovider.mapper.toModel
 import com.finances.infrastructure.dataprovider.repository.CategoryRepository
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 import javax.transaction.Transactional
 
-@Service
-class CategoryService(private val repository: CategoryRepository) : CategoryPort {
+@Component
+class CategoryDatabaseAdapter(private val repository: CategoryRepository) : CategoryDatabasePort {
 
     @Transactional
     override fun save(category: Category) =

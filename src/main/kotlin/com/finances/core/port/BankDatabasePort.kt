@@ -1,9 +1,9 @@
-package com.finances.core.port.input
+package com.finances.core.port
 
 import com.finances.core.model.Bank
 import java.util.*
 
-interface BankPort {
+interface BankDatabasePort {
     fun save(bank: Bank): Bank
     fun existsByCodeAndId(code: String, id: String): Boolean
     fun delete(id: String)
