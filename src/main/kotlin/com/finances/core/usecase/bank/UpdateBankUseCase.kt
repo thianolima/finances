@@ -17,7 +17,7 @@ class UpdateBankUseCase(private val bankPort: BankPort) {
 
     private fun validate(bank: Bank) =
         when (bankPort.findById(bank.id).isPresent) {
-            true -> !bankPort.existsByCode(bank.code, bank.id)
+            true -> !bankPort.existsByCodeAndId(bank.code, bank.id)
             false -> throw EntityNotFoundException(MSG_NOT_FOUND)
         }
 }

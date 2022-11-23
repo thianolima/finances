@@ -15,8 +15,8 @@ class BankService(private val repository: BankRepository) : BankPort {
     override fun save(bank: Bank) =
         repository.save(bank.toEntity()).toModel()
 
-    override fun existsByCode(code: String, id: String) =
-        repository.findByCodeAndIdNot(code, id).isPresent
+    override fun existsByCodeAndId(code: String, id: String) =
+        repository.findByCodeAndId(code, id).isPresent
 
     @Transactional
     override fun delete(id: String) =

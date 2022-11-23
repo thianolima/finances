@@ -11,7 +11,7 @@ class CreateBankUseCase(private val bankPort: BankPort) {
     private val MSG_EXISTS = "Codigo de Banco já utilizada no sistema!"
 
     fun execute(bank: Bank) =
-        when (bankPort.existsByCode(bank.code, bank.id)) {
+        when (bankPort.existsByCodeAndId(bank.code, bank.id)) {
             true -> throw EntityAlreadyExistsException(MSG_EXISTS)
             false -> bankPort.save(bank)
         }

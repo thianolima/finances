@@ -5,7 +5,7 @@ import java.util.*
 
 interface BankPort {
     fun save(bank: Bank): Bank
-    fun existsByCode(code: String, id: String): Boolean
+    fun existsByCodeAndId(code: String, id: String): Boolean
     fun delete(id: String)
     fun findById(id: String): Optional<Bank>
 }
