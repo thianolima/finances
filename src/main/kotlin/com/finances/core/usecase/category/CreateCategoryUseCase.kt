@@ -6,7 +6,7 @@ import com.finances.core.port.input.CategoryPort
 
 class CreateCategoryUseCase(private val categoryPort: CategoryPort) {
 
-    private val MSG_EXISTS = "Nome de categoria já utilizada no sistema!"
+    private val MSG_EXISTS = "Nome de Categoria já utilizada no sistema!"
 
     fun execute(category: Category) =
         when (categoryPort.existsByName(category.name)) {

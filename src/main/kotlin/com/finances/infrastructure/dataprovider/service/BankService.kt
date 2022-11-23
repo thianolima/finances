@@ -1,22 +1,22 @@
 package com.finances.infrastructure.dataprovider.service
 
-import com.finances.core.model.Category
-import com.finances.core.port.input.CategoryPort
+import com.finances.core.model.Bank
+import com.finances.core.port.input.BankPort
 import com.finances.infrastructure.dataprovider.mapper.toEntity
 import com.finances.infrastructure.dataprovider.mapper.toModel
-import com.finances.infrastructure.dataprovider.repository.CategoryRepository
+import com.finances.infrastructure.dataprovider.repository.BankRepository
 import org.springframework.stereotype.Service
 import javax.transaction.Transactional
 
 @Service
-class CategoryService(private val repository: CategoryRepository) : CategoryPort {
+class BankService(private val repository: BankRepository) : BankPort {
 
     @Transactional
-    override fun save(category: Category) =
-        repository.save(category.toEntity()).toModel()
+    override fun save(bank: Bank) =
+        repository.save(bank.toEntity()).toModel()
 
-    override fun existsByName(name: String) =
-        repository.findByName(name).isPresent
+    override fun existsByCode(code: String, id: String) =
+        repository.findByCodeAndIdNot(code, id).isPresent
 
     @Transactional
     override fun delete(id: String) =

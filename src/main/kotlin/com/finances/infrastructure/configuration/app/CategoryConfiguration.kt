@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-class AppConfiguration {
+class CategoryConfiguration {
     @Bean
     fun createCategoryUseCase(categoryService: CategoryService) =
         CreateCategoryUseCase(categoryService)

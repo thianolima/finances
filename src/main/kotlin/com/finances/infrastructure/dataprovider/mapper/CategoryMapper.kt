@@ -4,13 +4,13 @@ import com.finances.core.model.Category
 import com.finances.infrastructure.dataprovider.entity.CategoryEntity
 import com.finances.infrastructure.entrypoint.dto.output.CategoryResponse
 
-fun CategoryEntity.toCategory() =
+fun CategoryEntity.toModel() =
     Category(
-        id = this.id!!,
+        id = this.id,
         name = this.name
     )
 
-fun Category.toCategoryEntity() =
+fun Category.toEntity() =
     CategoryEntity(
         id = this.id,
         name = this.name
