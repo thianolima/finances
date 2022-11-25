@@ -15,12 +15,12 @@ class CategoryDatabaseAdapter(private val repository: CategoryRepository) : Cate
     override fun save(category: Category) =
         repository.save(category.toEntity()).toModel()
 
-    override fun existsByName(name: String) =
-        repository.findByName(name).isPresent
-
     @Transactional
     override fun delete(id: String) =
         repository.deleteById(id)
+
+    override fun existsByName(name: String) =
+        repository.findByName(name).isPresent
 
     override fun findById(id: String) =
         repository.findById(id)

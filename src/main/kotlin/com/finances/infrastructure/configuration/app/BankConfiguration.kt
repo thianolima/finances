@@ -11,18 +11,18 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class BankConfiguration {
     @Bean
-    fun createBankUseCase(bankRepositoryAdapter: BankDatabaseAdapter) =
-        CreateBankUseCase(bankRepositoryAdapter)
+    fun createBankUseCase(bankDatabaseAdapter: BankDatabaseAdapter) =
+        CreateBankUseCase(bankDatabaseAdapter)
 
     @Bean
-    fun deleteBankUseCase(bankRepositoryAdapter: BankDatabaseAdapter) =
-        DeleteBankUseCase(bankRepositoryAdapter)
+    fun deleteBankUseCase(bankDatabaseAdapter: BankDatabaseAdapter) =
+        DeleteBankUseCase(bankDatabaseAdapter)
 
     @Bean
-    fun updateBankUseCase(bankRepositoryAdapter: BankDatabaseAdapter) =
-        UpdateBankUseCase(bankRepositoryAdapter)
+    fun updateBankUseCase(bankDatabaseAdapter: BankDatabaseAdapter) =
+        UpdateBankUseCase(bankDatabaseAdapter)
 
     @Bean
-    fun getBankByIdUseCase(bankRepositoryAdapter: BankDatabaseAdapter) =
-        GetBankByIdUseCase(bankRepositoryAdapter)
+    fun getBankByIdUseCase(bankDatabaseAdapter: BankDatabaseAdapter) =
+        GetBankByIdUseCase(bankDatabaseAdapter)
 }

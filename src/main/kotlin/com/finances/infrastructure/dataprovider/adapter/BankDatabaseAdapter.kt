@@ -15,12 +15,12 @@ class BankDatabaseAdapter(private val repository: BankRepository) : BankDatabase
     override fun save(bank: Bank) =
         repository.save(bank.toEntity()).toModel()
 
-    override fun existsByCodeAndId(code: String, id: String) =
-        repository.findByCodeAndId(code, id).isPresent
-
     @Transactional
     override fun delete(id: String) =
         repository.deleteById(id)
+
+    override fun existsByCodeAndId(code: String, id: String) =
+        repository.findByCodeAndId(code, id).isPresent
 
     override fun findById(id: String) =
         repository.findById(id)

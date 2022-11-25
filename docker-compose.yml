@@ -33,6 +33,7 @@ services:
       - finances
     volumes:
       - localstack:/tmp/localstack
+    restart: unless-stopped
 
 networks:
   finances:
