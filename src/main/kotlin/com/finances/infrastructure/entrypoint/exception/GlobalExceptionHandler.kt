@@ -1,8 +1,8 @@
 package com.finances.infrastructure.entrypoint.exception
 
+import com.finances.core.exception.AccountUsingBankException
 import com.finances.core.exception.EntityAlreadyExistsException
 import com.finances.core.exception.EntityNotFoundException
-import org.springframework.beans.factory.parsing.ProblemReporter
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -16,12 +16,16 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(EntityAlreadyExistsException::class)
-    fun alreadyExists(ex: EntityAlreadyExistsException): ResponseEntity<Any> =
+    fun alreadyExists(ex: EntityAlreadyExistsException) =
         ResponseEntity(Response(ex.message!!), HttpStatus.BAD_REQUEST)
 
     @ExceptionHandler(EntityNotFoundException::class)
-    fun notFound(ex: EntityNotFoundException): ResponseEntity<Any> =
+    fun notFound(ex: EntityNotFoundException) =
         ResponseEntity(Response(ex.message!!), HttpStatus.NOT_FOUND)
+
+    @ExceptionHandler(AccountUsingBankException::class)
+    fun notFound(ex: AccountUsingBankException) =
+        ResponseEntity(Response(ex.message!!), HttpStatus.UNAUTHORIZED)
 
     override fun handleMethodArgumentNotValid(
         ex: MethodArgumentNotValidException,
@@ -37,5 +41,5 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
             request
         )
 
-    private data class Response(val message: String)
+    data class Response(val message: String)
 }

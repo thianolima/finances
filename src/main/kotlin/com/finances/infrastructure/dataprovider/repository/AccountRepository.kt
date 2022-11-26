@@ -10,7 +10,7 @@ import java.util.*
 interface AccountRepository : JpaRepository<AccountEntity, String> {
 
     @Query("select a from AccountEntity a " +
-           "inner join fetch BankEntity b " +
+           "join fetch a.bank b " +
            "where a.bank.id = :idbank")
     fun findByBankId(idbank: String): Optional<AccountEntity>
 }
