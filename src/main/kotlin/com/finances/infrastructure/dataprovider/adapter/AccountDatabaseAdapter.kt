@@ -18,10 +18,15 @@ class AccountDatabaseAdapter(private val repository: AccountRepository):AccountD
 
     @Transactional
     override fun delete(id: String) {
-        TODO("Not yet implemented")
+        repository.deleteById(id)
     }
 
-    override fun findById(id: String): Optional<Account> {
-        TODO("Not yet implemented")
-    }
+    override fun findById(id: String) =
+        repository.findById(id)
+            .map {
+                it.toModel()
+            }
+
+    override fun existsByBankId(idbank: String) =
+        repository.findByBankId(idbank).isPresent
 }

@@ -6,7 +6,7 @@ import com.finances.core.model.Bank
 import com.finances.core.port.BankDatabasePort
 
 class UpdateBankUseCase(private val bankDatabasePort: BankDatabasePort) {
-    private val MSG_EXISTS = "Codigo de Banco já utilizada no sistema!"
+    private val MSG_EXISTS = "Codigo de Banco já utilizado no sistema!"
     private val MSG_NOT_FOUND = "Banco não encontrado!"
 
     fun execute(bank: Bank) =

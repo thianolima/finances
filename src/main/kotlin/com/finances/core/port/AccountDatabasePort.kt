@@ -7,4 +7,5 @@ interface AccountDatabasePort {
     fun save(account: Account): Account
     fun delete(id: String)
     fun findById(id: String): Optional<Account>
+    fun existsByBankId(idbank: String): Boolean
 }
