@@ -7,7 +7,6 @@ data class Account (
     val description: String,
     val bank : Bank
 ){
-
     constructor(description: String, bank: Bank) : this(
         id = UUID.randomUUID().toString(),
         description = description,
