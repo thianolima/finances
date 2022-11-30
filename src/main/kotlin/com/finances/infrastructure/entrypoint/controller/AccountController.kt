@@ -1,11 +1,11 @@
 package com.finances.infrastructure.entrypoint.controller
 
-import com.finances.core.model.Account
 import com.finances.core.usecase.account.CreateAccountUseCase
 import com.finances.core.usecase.account.DeleteAccountUseCase
 import com.finances.core.usecase.account.GetAccountByIdUseCase
 import com.finances.core.usecase.account.UpdateAccountUseCase
 import com.finances.core.usecase.bank.GetBankByIdUseCase
+import com.finances.infrastructure.dataprovider.mapper.toModel
 import com.finances.infrastructure.dataprovider.mapper.toResponse
 import com.finances.infrastructure.entrypoint.dto.input.AccountRequest
 import org.springframework.http.HttpStatus
@@ -26,9 +26,8 @@ class AccountController(
     fun create(@RequestBody @Valid request: AccountRequest) =
         ResponseEntity(
             createAccountUseCase.execute(
-                Account(
-                    description = request.description,
-                    bank = getBankByIdUseCase.execute(request.idbank)
+                request.toModel(
+                    getBankByIdUseCase.execute(request.idbank)
                 )
             ).toResponse(), HttpStatus.CREATED
         )
@@ -37,10 +36,8 @@ class AccountController(
     fun update(@PathVariable id: String, @Valid @RequestBody request: AccountRequest) =
         ResponseEntity(
             getUpdateAccountUseCase.execute(
-                Account(
-                    id = id,
-                    description = request.description,
-                    bank = getBankByIdUseCase.execute(request.idbank)
+                request.toModel(
+                    getBankByIdUseCase.execute(request.idbank)
                 )
             ).toResponse(), HttpStatus.OK
         )

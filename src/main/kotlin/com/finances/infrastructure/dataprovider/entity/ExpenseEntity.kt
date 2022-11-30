@@ -15,6 +15,7 @@ class ExpenseEntity(
     val buyDate: LocalDate,
     val payDate: LocalDate?,
     val amount: Double,
+    val pay: Boolean,
     @ManyToOne
     @JoinColumn(name = "idcategory", nullable = false, foreignKey= ForeignKey(name = "fk_expense_category"))
     val category: CategoryEntity,

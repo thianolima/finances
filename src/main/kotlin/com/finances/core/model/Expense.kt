@@ -30,20 +30,18 @@ data class Expense(
     }
 
     constructor(
-        id: String,
         description: String,
         buyDate: LocalDate,
         dueDate: LocalDate,
         amount: Double,
         category: Category,
-        payDate: LocalDate?,
         account: Account
     ) : this(
         id = UUID.randomUUID().toString(),
         description = description,
         buyDate = buyDate,
         dueDate =  dueDate,
-        payDate = payDate,
+        payDate = null,
         amount = amount,
         category = category,
         account = account,

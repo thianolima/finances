@@ -1,31 +1,57 @@
 package com.finances.infrastructure.dataprovider.mapper
 
+import com.finances.core.model.Account
+import com.finances.core.model.Category
 import com.finances.core.model.Expense
 import com.finances.infrastructure.dataprovider.entity.ExpenseEntity
-import java.time.LocalDate
+import com.finances.infrastructure.entrypoint.dto.input.ExpenseRequest
+import com.finances.infrastructure.entrypoint.dto.output.ExpenseResponse
 
-class ExpenseMapper {
-    fun ExpenseEntity.toModel() =
-        Expense(
-            id = this.id,
-            description = this.description,
-            buyDate = this.buyDate,
-            dueDate =  this.dueDate,
-            payDate = this.payDate,
-            amount = this.amount,
-            category = this.category.toModel(),
-            account = this.account.toModel()
-        )
+fun ExpenseEntity.toModel() =
+    Expense(
+        id = this.id,
+        description = this.description,
+        buyDate = this.buyDate,
+        dueDate = this.dueDate,
+        payDate = this.payDate,
+        amount = this.amount,
+        category = this.category.toModel(),
+        account = this.account.toModel(),
+        pay = this.pay
+    )
 
-    fun Expense.toEntity() =
-        ExpenseEntity(
-            id = this.id,
-            description = this.description,
-            buyDate = this.buyDate,
-            dueDate =  this.dueDate,
-            payDate = this.payDate,
-            amount = this.amount,
-            category = this.category.toEntity(),
-            account = this.account.toEntity()
-        )
-}
+fun Expense.toEntity() =
+    ExpenseEntity(
+        id = this.id,
+        description = this.description,
+        buyDate = this.buyDate,
+        dueDate = this.dueDate,
+        payDate = this.payDate,
+        amount = this.amount,
+        category = this.category.toEntity(),
+        account = this.account.toEntity(),
+        pay = this.pay
+    )
+
+fun ExpenseRequest.toModel(category: Category, account: Account) =
+    Expense(
+        description = this.description,
+        buyDate = this.buyDate,
+        dueDate = this.dueDate,
+        amount = this.amount,
+        category = category,
+        account = account
+    )
+
+fun Expense.toResponse() =
+    ExpenseResponse(
+        id = this.id,
+        description = this.description,
+        buyDate = this.buyDate,
+        dueDate = this.dueDate,
+        payDate = this.payDate,
+        amount = this.amount,
+        category = this.category,
+        account = this.account,
+        pay = this.pay
+    )
