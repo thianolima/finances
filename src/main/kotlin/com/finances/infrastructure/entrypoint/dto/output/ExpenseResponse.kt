@@ -1,7 +1,5 @@
 package com.finances.infrastructure.entrypoint.dto.output
 
-import com.finances.core.model.Account
-import com.finances.core.model.Category
 import io.swagger.v3.oas.annotations.media.Schema
 import java.time.LocalDate
 
@@ -25,8 +23,8 @@ data class ExpenseResponse (
     @field:Schema(example = "10.00")
     val amount: Double,
 
-    val category: Category,
-    val account: Account,
+    val category: CategoryResponse,
+    val account: AccountResponse,
 
     @field:Schema(example = "false")
     val pay: Boolean

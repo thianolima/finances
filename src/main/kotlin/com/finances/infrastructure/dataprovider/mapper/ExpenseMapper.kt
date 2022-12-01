@@ -51,7 +51,7 @@ fun Expense.toResponse() =
         dueDate = this.dueDate,
         payDate = this.payDate,
         amount = this.amount,
-        category = this.category,
-        account = this.account,
+        category = this.category.toResponse(),
+        account = this.account.toResponse(),
         pay = this.pay
     )

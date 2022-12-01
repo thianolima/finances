@@ -10,6 +10,5 @@ class AccountResponse(
     @field:Schema(example = "Conta Corrente", nullable = false)
     val description: String,
 
-    @field:Schema(example = "Itaú BBA S.A.", nullable = true)
-    val bank: String
+    val bank: BankResponse
 )

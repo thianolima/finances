@@ -24,7 +24,7 @@ fun Account.toResponse() =
     AccountResponse(
         id = this.id,
         description = this.description,
-        bank = this.bank.name
+        bank = this.bank.toResponse()
     )
 
 fun AccountRequest.toModel(bank: Bank) =
