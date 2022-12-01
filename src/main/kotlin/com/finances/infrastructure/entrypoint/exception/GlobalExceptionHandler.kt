@@ -1,9 +1,6 @@
 package com.finances.infrastructure.entrypoint.exception
 
-import com.finances.core.exception.AccountUsingBankException
-import com.finances.core.exception.DomainException
-import com.finances.core.exception.EntityAlreadyExistsException
-import com.finances.core.exception.EntityNotFoundException
+import com.finances.core.exception.*
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -28,9 +25,14 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
     fun accountUsingBank(ex: AccountUsingBankException) =
         ResponseEntity(Response(ex.message!!), HttpStatus.UNAUTHORIZED)
 
+    @ExceptionHandler(ExpenseUsingAccountException::class)
+    fun expenseUsingAccount(ex: ExpenseUsingAccountException) =
+        ResponseEntity(Response(ex.message!!), HttpStatus.UNAUTHORIZED)
+
     @ExceptionHandler(DomainException::class)
     fun domain(ex: DomainException) =
         ResponseEntity(Response(ex.message!!), HttpStatus.UNAUTHORIZED)
+
 
     override fun handleMethodArgumentNotValid(
         ex: MethodArgumentNotValidException,

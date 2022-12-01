@@ -5,6 +5,7 @@ import com.finances.core.usecase.account.DeleteAccountUseCase
 import com.finances.core.usecase.account.GetAccountByIdUseCase
 import com.finances.core.usecase.account.UpdateAccountUseCase
 import com.finances.infrastructure.dataprovider.adapter.AccountDatabaseAdapter
+import com.finances.infrastructure.dataprovider.adapter.ExpenseDatabaseAdapter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -24,6 +25,6 @@ class AccountConfiguration {
         UpdateAccountUseCase(accountDatabaseAdapter)
 
     @Bean
-    fun deleteAccountUseCase(accountDatabaseAdapter: AccountDatabaseAdapter) =
-        DeleteAccountUseCase(accountDatabaseAdapter)
+    fun deleteAccountUseCase(accountDatabaseAdapter: AccountDatabaseAdapter, expenseDatabaseAdapter: ExpenseDatabaseAdapter) =
+        DeleteAccountUseCase(accountDatabaseAdapter, expenseDatabaseAdapter)
 }

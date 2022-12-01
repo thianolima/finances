@@ -13,7 +13,8 @@ class CategoryDatabaseAdapter(private val repository: CategoryRepository) : Cate
 
     @Transactional
     override fun save(category: Category) =
-        repository.save(category.toEntity()).toModel()
+        repository.save(category.toEntity())
+            .toModel()
 
     @Transactional
     override fun delete(id: String) =

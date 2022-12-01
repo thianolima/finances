@@ -14,7 +14,8 @@ class AccountDatabaseAdapter(private val repository: AccountRepository):AccountD
 
     @Transactional
     override fun save(account: Account) =
-        repository.save(account.toEntity()).toModel()
+        repository.save(account.toEntity())
+            .toModel()
 
     @Transactional
     override fun delete(id: String) {

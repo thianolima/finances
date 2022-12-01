@@ -13,7 +13,8 @@ class BankDatabaseAdapter(private val repository: BankRepository) : BankDatabase
 
     @Transactional
     override fun save(bank: Bank) =
-        repository.save(bank.toEntity()).toModel()
+        repository.save(bank.toEntity())
+            .toModel()
 
     @Transactional
     override fun delete(id: String) =
