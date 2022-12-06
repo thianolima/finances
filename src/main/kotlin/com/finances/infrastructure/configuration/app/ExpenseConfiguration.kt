@@ -2,6 +2,7 @@ package com.finances.infrastructure.configuration.app
 
 import com.finances.core.usecase.expense.CreateExpenseUseCase
 import com.finances.core.usecase.expense.GetExpenseByIdUseCase
+import com.finances.core.usecase.expense.UpdateExpenseUseCase
 import com.finances.infrastructure.dataprovider.adapter.ExpenseDatabaseAdapter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -15,4 +16,8 @@ class ExpenseConfiguration {
     @Bean
     fun getExpenseByIdUseCase(expenseDatabaseAdapter: ExpenseDatabaseAdapter) =
         GetExpenseByIdUseCase(expenseDatabaseAdapter)
+
+    @Bean
+    fun updateExpenseUseCase(expenseDatabaseAdapter: ExpenseDatabaseAdapter) =
+        UpdateExpenseUseCase(expenseDatabaseAdapter)
 }

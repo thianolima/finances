@@ -20,12 +20,13 @@ data class ExpenseResponse (
     @field:Schema(example = "2022-12-01")
     val payDate: LocalDate?,
 
+    @field:Schema(example = "true")
+    val pay: Boolean,
+
     @field:Schema(example = "10.00")
     val amount: Double,
 
     val category: CategoryResponse,
-    val account: AccountResponse,
+    val account: AccountResponse
 
-    @field:Schema(example = "false")
-    val pay: Boolean
 )

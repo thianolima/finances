@@ -23,7 +23,7 @@ services:
       - AWS_DEFAULT_REGION=us-east-1
       - AWS_ACCESS_KEY_ID=fakeaccess
       - AWS_SECRET_KEY_ID=fakesecret
-      - SERVICES=sqs, secretmanager, ssm, s3
+      - SERVICES=secretmanager, ssm
       - LAMBDA_EXECUTOR=docker
       - DATA_DIR=/tmp/localstack/data
       - DEBU=1

@@ -11,8 +11,8 @@ fun ExpenseEntity.toModel() =
     Expense(
         id = this.id,
         description = this.description,
-        buyDate = this.buyDate,
         dueDate = this.dueDate,
+        buyDate = this.buyDate,
         payDate = this.payDate,
         amount = this.amount,
         category = this.category.toModel(),
@@ -43,6 +43,19 @@ fun ExpenseRequest.toModel(category: Category, account: Account) =
         account = account
     )
 
+fun ExpenseRequest.toModel(id: String, category: Category, account: Account) =
+    Expense(
+        id = id,
+        description = this.description,
+        dueDate = this.dueDate,
+        buyDate = this.buyDate,
+        payDate = this.payDate,
+        pay = this.pay?:false,
+        amount = this.amount,
+        category = category,
+        account = account
+    )
+
 fun Expense.toResponse() =
     ExpenseResponse(
         id = this.id,
@@ -50,8 +63,8 @@ fun Expense.toResponse() =
         buyDate = this.buyDate,
         dueDate = this.dueDate,
         payDate = this.payDate,
+        pay = this.pay,
         amount = this.amount,
         category = this.category.toResponse(),
-        account = this.account.toResponse(),
-        pay = this.pay
+        account = this.account.toResponse()
     )
