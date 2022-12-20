@@ -29,10 +29,10 @@ data class Expense(
             throw DomainException("A data do pagamento não pode ser menor que a da compra!")
 
         if(this.pay && this.payDate == null)
-            throw DomainException("A Data de Pagamento não pode estar vazia para ao se tornar Paga!")
+            throw DomainException("A Data de Pagamento não pode estar vazia quando uma despesa estiver Paga!")
 
         if(!this.pay && this.payDate != null)
-            throw DomainException("Uma despesa não pode ter uma Data de Pagamento sem estar Paga!")
+            throw DomainException("A despesa não pode possuir uma Data de Pagamento e não estar Paga!")
     }
 
     constructor(

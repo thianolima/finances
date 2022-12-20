@@ -1,12 +1,12 @@
 package com.finances.core.usecase.bank
 
 import com.finances.core.exception.EntityNotFoundException
-import com.finances.core.port.BankDatabasePort
+import com.finances.core.repository.BankRepository
 
-class GetBankByIdUseCase(private val bankDatabasePort: BankDatabasePort) {
+class GetBankByIdUseCase(private val bankRepository: BankRepository) {
     private val MSG_NOT_FOUND = "Banco não encontrado!"
 
     fun execute(id: String) =
-        bankDatabasePort.findById(id)
+        bankRepository.findById(id)
             .orElseThrow { EntityNotFoundException(MSG_NOT_FOUND) }
 }

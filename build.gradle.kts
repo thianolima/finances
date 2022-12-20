@@ -33,6 +33,13 @@ dependencies {
 
 	// Jackson
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+	// Test
+	implementation("org.hamcrest:hamcrest:2.2")
+	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.5.20")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+	testImplementation("io.rest-assured:kotlin-extensions:4.4.0")
 }
 
 tasks.withType<KotlinCompile> {

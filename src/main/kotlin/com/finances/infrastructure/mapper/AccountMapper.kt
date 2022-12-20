@@ -1,4 +1,4 @@
-package com.finances.infrastructure.dataprovider.mapper
+package com.finances.infrastructure.mapper
 
 import com.finances.core.model.Account
 import com.finances.core.model.Bank
@@ -29,6 +29,13 @@ fun Account.toResponse() =
 
 fun AccountRequest.toModel(bank: Bank) =
     Account(
+        description = this.description,
+        bank = bank
+    )
+
+fun AccountRequest.toModel(id: String, bank: Bank) =
+    Account(
+        id = id,
         description = this.description,
         bank = bank
     )

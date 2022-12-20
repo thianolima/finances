@@ -1,4 +1,4 @@
-package com.finances.infrastructure.dataprovider.mapper
+package com.finances.infrastructure.mapper
 
 import com.finances.core.model.Category
 import com.finances.infrastructure.dataprovider.entity.CategoryEntity

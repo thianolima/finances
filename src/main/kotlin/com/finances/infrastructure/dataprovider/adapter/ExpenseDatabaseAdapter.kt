@@ -2,8 +2,8 @@ package com.finances.infrastructure.dataprovider.adapter
 
 import com.finances.core.model.Expense
 import com.finances.core.port.ExpenseDatabasePort
-import com.finances.infrastructure.dataprovider.mapper.toEntity
-import com.finances.infrastructure.dataprovider.mapper.toModel
+import com.finances.infrastructure.mapper.toEntity
+import com.finances.infrastructure.mapper.toModel
 import com.finances.infrastructure.dataprovider.repository.ExpenseRepository
 import org.springframework.stereotype.Component
 

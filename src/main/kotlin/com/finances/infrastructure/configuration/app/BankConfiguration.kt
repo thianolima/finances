@@ -5,25 +5,26 @@ import com.finances.core.usecase.bank.DeleteBankUseCase
 import com.finances.core.usecase.bank.GetBankByIdUseCase
 import com.finances.core.usecase.bank.UpdateBankUseCase
 import com.finances.infrastructure.dataprovider.adapter.AccountDatabaseAdapter
-import com.finances.infrastructure.dataprovider.adapter.BankDatabaseAdapter
+import com.finances.infrastructure.dataprovider.repository.BankRepositoryJPA
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
 class BankConfiguration {
-    @Bean
-    fun createBankUseCase(bankDatabaseAdapter: BankDatabaseAdapter) =
-        CreateBankUseCase(bankDatabaseAdapter)
 
     @Bean
-    fun deleteBankUseCase(bankDatabaseAdapter: BankDatabaseAdapter, accountDatabaseAdapter: AccountDatabaseAdapter) =
-        DeleteBankUseCase(bankDatabaseAdapter, accountDatabaseAdapter)
+    fun createBankUseCase(bankRepository: BankRepositoryJPA) =
+        CreateBankUseCase(bankRepository)
 
     @Bean
-    fun updateBankUseCase(bankDatabaseAdapter: BankDatabaseAdapter) =
-        UpdateBankUseCase(bankDatabaseAdapter)
+    fun deleteBankUseCase(bankRepository: BankRepositoryJPA, accountDatabaseAdapter: AccountDatabaseAdapter) =
+        DeleteBankUseCase(bankRepository, accountDatabaseAdapter)
 
     @Bean
-    fun getBankByIdUseCase(bankDatabaseAdapter: BankDatabaseAdapter) =
-        GetBankByIdUseCase(bankDatabaseAdapter)
+    fun updateBankUseCase(bankRepository: BankRepositoryJPA) =
+        UpdateBankUseCase(bankRepository)
+
+    @Bean
+    fun getBankByIdUseCase(bankRepository: BankRepositoryJPA) =
+        GetBankByIdUseCase(bankRepository)
 }

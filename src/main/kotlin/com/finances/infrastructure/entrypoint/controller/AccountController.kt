@@ -5,8 +5,8 @@ import com.finances.core.usecase.account.DeleteAccountUseCase
 import com.finances.core.usecase.account.GetAccountByIdUseCase
 import com.finances.core.usecase.account.UpdateAccountUseCase
 import com.finances.core.usecase.bank.GetBankByIdUseCase
-import com.finances.infrastructure.dataprovider.mapper.toModel
-import com.finances.infrastructure.dataprovider.mapper.toResponse
+import com.finances.infrastructure.mapper.toModel
+import com.finances.infrastructure.mapper.toResponse
 import com.finances.infrastructure.entrypoint.dto.input.AccountRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -37,6 +37,7 @@ class AccountController(
         ResponseEntity(
             getUpdateAccountUseCase.execute(
                 request.toModel(
+                    id,
                     getBankByIdUseCase.execute(request.idbank)
                 )
             ).toResponse(), HttpStatus.OK

@@ -1,14 +1,12 @@
 package com.finances.infrastructure.entrypoint.controller
 
-import com.finances.core.model.Category
 import com.finances.core.usecase.account.GetAccountByIdUseCase
 import com.finances.core.usecase.category.GetCategoryByIdUseCase
 import com.finances.core.usecase.expense.CreateExpenseUseCase
 import com.finances.core.usecase.expense.GetExpenseByIdUseCase
 import com.finances.core.usecase.expense.UpdateExpenseUseCase
-import com.finances.infrastructure.dataprovider.mapper.toModel
-import com.finances.infrastructure.dataprovider.mapper.toResponse
-import com.finances.infrastructure.entrypoint.dto.input.CategoryRequest
+import com.finances.infrastructure.mapper.toModel
+import com.finances.infrastructure.mapper.toResponse
 import com.finances.infrastructure.entrypoint.dto.input.ExpenseRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
