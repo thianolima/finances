@@ -1,12 +1,11 @@
-package com.finances.infrastructure.dataprovider.adapter
+package com.finances.infrastructure.dataprovider.database.adapter
 
 import com.finances.core.model.Account
 import com.finances.core.port.AccountDatabasePort
 import com.finances.infrastructure.mapper.toEntity
 import com.finances.infrastructure.mapper.toModel
-import com.finances.infrastructure.dataprovider.repository.AccountRepository
+import com.finances.infrastructure.dataprovider.database.repository.AccountRepository
 import org.springframework.stereotype.Component
-import java.util.*
 import javax.transaction.Transactional
 
 @Component

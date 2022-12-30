@@ -2,7 +2,7 @@ package com.finances.infrastructure.mapper
 
 import com.finances.core.model.Account
 import com.finances.core.model.Bank
-import com.finances.infrastructure.dataprovider.entity.AccountEntity
+import com.finances.infrastructure.dataprovider.database.entity.AccountEntity
 import com.finances.infrastructure.entrypoint.dto.input.AccountRequest
 import com.finances.infrastructure.entrypoint.dto.output.AccountResponse
 

@@ -1,9 +1,9 @@
-package com.finances.core.port
+package com.finances.core.repository
 
 import com.finances.core.model.Category
 import java.util.*
 
-interface CategoryDatabasePort {
+interface CategoryRepository {
     fun save(category: Category): Category
     fun existsByName(name: String): Boolean
     fun delete(id: String)

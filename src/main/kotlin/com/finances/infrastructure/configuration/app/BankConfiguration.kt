@@ -4,8 +4,8 @@ import com.finances.core.usecase.bank.CreateBankUseCase
 import com.finances.core.usecase.bank.DeleteBankUseCase
 import com.finances.core.usecase.bank.GetBankByIdUseCase
 import com.finances.core.usecase.bank.UpdateBankUseCase
-import com.finances.infrastructure.dataprovider.adapter.AccountDatabaseAdapter
-import com.finances.infrastructure.dataprovider.repository.BankRepositoryJPA
+import com.finances.infrastructure.dataprovider.database.adapter.AccountDatabaseAdapter
+import com.finances.infrastructure.dataprovider.database.repository.BankRepositoryJPA
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 

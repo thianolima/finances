@@ -1,4 +1,4 @@
-package com.finances.infrastructure.dataprovider.entity
+package com.finances.infrastructure.dataprovider.database.entity
 
 import org.hibernate.annotations.DynamicUpdate
 import javax.persistence.Entity

@@ -1,8 +1,8 @@
-package com.finances.infrastructure.dataprovider.repository
+package com.finances.infrastructure.dataprovider.database.repository
 
 import com.finances.core.model.Bank
 import com.finances.core.repository.BankRepository
-import com.finances.infrastructure.dataprovider.entity.BankEntity
+import com.finances.infrastructure.dataprovider.database.entity.BankEntity
 import com.finances.infrastructure.mapper.toEntity
 import com.finances.infrastructure.mapper.toModel
 import org.springframework.stereotype.Repository
@@ -12,7 +12,10 @@ import javax.persistence.PersistenceContext
 import javax.transaction.Transactional
 
 @Repository
-class BankRepositoryJPA(@PersistenceContext private val entityManager: EntityManager) : BankRepository {
+class BankRepositoryJPA(
+    @PersistenceContext
+    private val entityManager: EntityManager
+) : BankRepository {
 
     @Transactional
     override fun save(bank: Bank) =

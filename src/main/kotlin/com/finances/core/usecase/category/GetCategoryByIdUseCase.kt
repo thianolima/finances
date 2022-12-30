@@ -1,13 +1,13 @@
 package com.finances.core.usecase.category
 
 import com.finances.core.exception.EntityNotFoundException
-import com.finances.core.port.CategoryDatabasePort
+import com.finances.core.repository.CategoryRepository
 
-class GetCategoryByIdUseCase(private val categoryDatabasePort: CategoryDatabasePort) {
+class GetCategoryByIdUseCase(private val categoryRepository: CategoryRepository) {
 
     private val MSG_NOT_FOUND = "Categoria não encontrada!"
 
     fun execute(id: String) =
-        categoryDatabasePort.findById(id)
+        categoryRepository.findById(id)
             .orElseThrow { EntityNotFoundException(MSG_NOT_FOUND) }
 }

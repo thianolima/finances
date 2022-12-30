@@ -3,7 +3,7 @@ package com.finances.infrastructure.mapper
 import com.finances.core.model.Account
 import com.finances.core.model.Category
 import com.finances.core.model.Expense
-import com.finances.infrastructure.dataprovider.entity.ExpenseEntity
+import com.finances.infrastructure.dataprovider.database.entity.ExpenseEntity
 import com.finances.infrastructure.entrypoint.dto.input.ExpenseRequest
 import com.finances.infrastructure.entrypoint.dto.output.ExpenseResponse
 

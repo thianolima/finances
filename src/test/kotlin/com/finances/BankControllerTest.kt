@@ -17,7 +17,7 @@ class BankControllerTest {
         val request = BankRequest("001", "BRASIL")
 
         Given {
-            //spec(requestSpecification())
+            spec(requestSpecification())
             body(request)
         }When {
             post("/banks")

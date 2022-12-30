@@ -1,6 +1,6 @@
-package com.finances.infrastructure.dataprovider.repository
+package com.finances.infrastructure.dataprovider.database.repository
 
-import com.finances.infrastructure.dataprovider.entity.AccountEntity
+import com.finances.infrastructure.dataprovider.database.entity.AccountEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
