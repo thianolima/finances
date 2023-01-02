@@ -2,12 +2,12 @@ package com.finances.core.usecase.bank
 
 import com.finances.core.exception.AccountUsingBankException
 import com.finances.core.exception.EntityNotFoundException
-import com.finances.core.port.AccountDatabasePort
+import com.finances.core.repository.AccountRepository
 import com.finances.core.repository.BankRepository
 
 class DeleteBankUseCase(
     private val bankRepository: BankRepository,
-    private val accountDatabasePort: AccountDatabasePort
+    private val accountRepository: AccountRepository
 ) {
     private val MSG_USING = "O Banco esta sendo utilizado em uma ou mais contas!"
     private val MSG_NOT_FOUND = "Banco não encontrado!"
@@ -20,7 +20,7 @@ class DeleteBankUseCase(
 
     private fun validate(id: String) =
         when (bankRepository.findById(id).isPresent) {
-            true -> !accountDatabasePort.existsByBankId(id)
+            true -> !accountRepository.existsByBankId(id)
             false -> throw EntityNotFoundException(MSG_NOT_FOUND)
         }
 }

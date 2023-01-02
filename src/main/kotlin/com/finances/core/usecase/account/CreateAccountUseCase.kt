@@ -1,10 +1,10 @@
 package com.finances.core.usecase.account
 
 import com.finances.core.model.Account
-import com.finances.core.port.AccountDatabasePort
+import com.finances.core.repository.AccountRepository
 
-class CreateAccountUseCase(private val accountDatabasePort: AccountDatabasePort) {
+class CreateAccountUseCase(private val accountRepository: AccountRepository) {
 
     fun execute(account: Account) =
-        accountDatabasePort.save(account)
+        accountRepository.save(account)
 }

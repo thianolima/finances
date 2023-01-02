@@ -4,7 +4,7 @@ import com.finances.core.usecase.bank.CreateBankUseCase
 import com.finances.core.usecase.bank.DeleteBankUseCase
 import com.finances.core.usecase.bank.GetBankByIdUseCase
 import com.finances.core.usecase.bank.UpdateBankUseCase
-import com.finances.infrastructure.dataprovider.database.adapter.AccountDatabaseAdapter
+import com.finances.infrastructure.dataprovider.database.repository.AccountRepositoryJPA
 import com.finances.infrastructure.dataprovider.database.repository.BankRepositoryJPA
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -17,8 +17,8 @@ class BankConfiguration {
         CreateBankUseCase(bankRepository)
 
     @Bean
-    fun deleteBankUseCase(bankRepository: BankRepositoryJPA, accountDatabaseAdapter: AccountDatabaseAdapter) =
-        DeleteBankUseCase(bankRepository, accountDatabaseAdapter)
+    fun deleteBankUseCase(bankRepository: BankRepositoryJPA, accountRepository: AccountRepositoryJPA) =
+        DeleteBankUseCase(bankRepository, accountRepository)
 
     @Bean
     fun updateBankUseCase(bankRepository: BankRepositoryJPA) =
