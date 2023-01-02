@@ -1,12 +1,12 @@
 package com.finances.core.usecase.expense
 
 import com.finances.core.exception.EntityNotFoundException
-import com.finances.core.port.ExpenseDatabasePort
+import com.finances.core.repository.ExpenseRepository
 
-class GetExpenseByIdUseCase(private val expenseDatabasePort: ExpenseDatabasePort) {
+class GetExpenseByIdUseCase(private val expenseRepository: ExpenseRepository) {
     private val MSG_NOT_FOUND = "Despesa não encontrado!"
 
     fun execute(id: String) =
-        expenseDatabasePort.findById(id)
+        expenseRepository.findById(id)
             .orElseThrow { EntityNotFoundException(MSG_NOT_FOUND) }
 }

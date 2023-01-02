@@ -5,6 +5,7 @@ import com.finances.core.usecase.category.DeleteCategoryUseCase
 import com.finances.core.usecase.category.GetCategoryByIdUseCase
 import com.finances.core.usecase.category.UpdateCategoryUseCase
 import com.finances.infrastructure.dataprovider.database.repository.CategoryRepositoryJPA
+import com.finances.infrastructure.dataprovider.database.repository.ExpenseRepositoryJPA
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -15,8 +16,8 @@ class CategoryConfiguration {
         CreateCategoryUseCase(categoryRepository)
 
     @Bean
-    fun deleteCategoryUseCase(categoryRepository: CategoryRepositoryJPA) =
-        DeleteCategoryUseCase(categoryRepository)
+    fun deleteCategoryUseCase(categoryRepository: CategoryRepositoryJPA, expenseRepository: ExpenseRepositoryJPA) =
+        DeleteCategoryUseCase(categoryRepository, expenseRepository)
 
     @Bean
     fun updateCategoryUseCase(categoryRepository: CategoryRepositoryJPA) =

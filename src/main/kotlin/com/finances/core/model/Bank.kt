@@ -7,7 +7,6 @@ data class Bank(
     val code: String,
     val name: String
 ) {
-
     constructor(code: String, name: String) : this(
         id = UUID.randomUUID().toString(),
         code = code,
