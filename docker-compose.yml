@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: financesdb
     volumes:
-      - postgres:/data/postgres
+      - postgres-data:/data/postgres
     ports:
       - "5432:5432"
     networks:
@@ -32,13 +32,35 @@ services:
     networks:
       - finances
     volumes:
-      - localstack:/tmp/localstack
+      - localstack-data:/tmp/localstack
     restart: unless-stopped
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - prometheus-data:/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - finances
+    restart: unless-stopped
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    ports:
+        - "3000:3000"
+    networks:
+      - finances
 
 networks:
   finances:
     driver: bridge
 
 volumes:
-  postgres:
-  localstack:
+  postgres-data:
+  localstack-data:
+  prometheus-data:
+  grafana-data:
