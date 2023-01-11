@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-	// Spring Boot
+	// SPRING
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -27,14 +27,19 @@ dependencies {
 	// H2
 	runtimeOnly("com.h2database:h2")
 
-	// Kotlin
+	// KOTLIN
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-	// Jackson
+	// JACKSON
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-	// Test
+	// OBSERVABILITY
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("io.micrometer:micrometer-registry-prometheus:1.10.2")
+
+
+	// TEST
 	implementation("org.hamcrest:hamcrest:2.2")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.5.20")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
