@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: finances
   h2:
     console:
       enabled: true
@@ -7,9 +9,9 @@ spring:
         trace: false
         web-allow-others: false
   datasource:
-    username: ${DB_USER:admin}
-    password: ${DB_PASSWORD:}
-    url: ${DB_URL:jdbc:h2:mem:finances-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${dbuser:admin}
+    password: ${dbpassword:}
+    url: ${dburl:jdbc:h2:mem:finances-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
   jpa:
     show-sql: true
     hibernate:
@@ -19,6 +21,20 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         use_sql_comments: true
         format_sql: true
+  cloud:
+    aws:
+      secretsmanager:
+        region: us-east-1
+        endpoint: http://localhost:4566
+      credentials:
+        access-key: fake-access
+        secret-key: fake-secret
+
+  config:
+    import:
+      - aws-secretsmanager:/secret/db-credential
+#      - optional:aws-secretsmanager:/secrets/optional-secret
+
 
 #ACTUATOR
 management:
@@ -26,7 +42,7 @@ management:
       enable-by-default: false
       web:
         exposure:
-          include: 'health, metrics, prometheus, info'
+          include: 'health, metrics, prometheus, info, env'
     endpoint:
       health:
         enabled: true

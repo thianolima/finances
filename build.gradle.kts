@@ -46,15 +46,13 @@ dependencies {
 //	implementation("software.amazon.awssdk:s3:2.19.20")
 //	implementation("software.amazon.awssdk:ssm:2.19.20")
 //	implementation("software.amazon.awssdk:secretsmanager:2.19.20")
+	implementation("com.amazonaws:aws-java-sdk:1.12.372")
 
 	//SPRING CLOUD AWS
 //	implementation("io.awspring.cloud:spring-cloud-starter-aws:${property("springAwsVersion")}")
 //	implementation("io.awspring.cloud:spring-cloud-starter-aws-secrets-manager-config")
 //	implementation("io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config")
-
 	implementation("io.awspring.cloud:spring-cloud-aws-starter-secrets-manager")
-	implementation("com.amazonaws:aws-java-sdk:1.12.372")
-
 
 	// TEST
 	implementation("org.hamcrest:hamcrest:2.2")

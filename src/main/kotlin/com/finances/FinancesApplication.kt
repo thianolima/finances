@@ -21,7 +21,6 @@ class FinancesApplication{
             println("URL: $url")
         }
     }
-
 }
 
 fun main(args: Array<String>) {
