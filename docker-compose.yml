@@ -23,7 +23,7 @@ services:
       - AWS_DEFAULT_REGION=us-east-1
       - AWS_ACCESS_KEY_ID=fakeaccess
       - AWS_SECRET_KEY_ID=fakesecret
-      - SERVICES=secretmanager, ssm
+      - SERVICES=secretmanager, ssm, sqs, s3
       - LAMBDA_EXECUTOR=docker
       - DATA_DIR=/tmp/localstack/data
       - DEBU=1
@@ -54,6 +54,7 @@ services:
         - "3000:3000"
     networks:
       - finances
+    restart: unless-stopped
 
 networks:
   finances:

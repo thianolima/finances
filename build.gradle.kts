@@ -16,6 +16,9 @@ repositories {
 	mavenCentral()
 }
 
+extra["springCloudVersion"] = "2021.0.5"
+extra["springAwsVersion"] = "3.0.0-M2"
+
 dependencies {
 	// SPRING
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -38,6 +41,20 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("io.micrometer:micrometer-registry-prometheus:1.10.2")
 
+	//AWS
+//	implementation("software.amazon.awssdk:bom:2.19.20")
+//	implementation("software.amazon.awssdk:s3:2.19.20")
+//	implementation("software.amazon.awssdk:ssm:2.19.20")
+//	implementation("software.amazon.awssdk:secretsmanager:2.19.20")
+
+	//SPRING CLOUD AWS
+//	implementation("io.awspring.cloud:spring-cloud-starter-aws:${property("springAwsVersion")}")
+//	implementation("io.awspring.cloud:spring-cloud-starter-aws-secrets-manager-config")
+//	implementation("io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config")
+
+	implementation("io.awspring.cloud:spring-cloud-aws-starter-secrets-manager")
+	implementation("com.amazonaws:aws-java-sdk:1.12.372")
+
 
 	// TEST
 	implementation("org.hamcrest:hamcrest:2.2")
@@ -45,6 +62,13 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
 	testImplementation("io.rest-assured:kotlin-extensions:4.4.0")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+		mavenBom("io.awspring.cloud:spring-cloud-aws-dependencies:${property("springAwsVersion")}")
+	}
 }
 
 tasks.withType<KotlinCompile> {
