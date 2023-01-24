@@ -26,6 +26,9 @@ spring:
       secretsmanager:
         region: us-east-1
         endpoint: http://localhost:4566
+      parameterstore:
+        region: us-east-1
+        endpoint: http://localhost:4566
       credentials:
         access-key: fake-access
         secret-key: fake-secret
@@ -33,8 +36,9 @@ spring:
   config:
     import:
       - aws-secretsmanager:/secret/db-credential
-#      - optional:aws-secretsmanager:/secrets/optional-secret
-
+#     - optional:aws-secretsmanager:/secrets/optional-secret
+      - aws-parameterstore:/config/
+#     - optional:aws-parameterstore:/config/optional-store
 
 #ACTUATOR
 management:

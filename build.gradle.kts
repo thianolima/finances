@@ -53,6 +53,7 @@ dependencies {
 //	implementation("io.awspring.cloud:spring-cloud-starter-aws-secrets-manager-config")
 //	implementation("io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config")
 	implementation("io.awspring.cloud:spring-cloud-aws-starter-secrets-manager")
+	implementation("io.awspring.cloud:spring-cloud-aws-starter-parameter-store")
 
 	// TEST
 	implementation("org.hamcrest:hamcrest:2.2")
