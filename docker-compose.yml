@@ -18,6 +18,7 @@ services:
 
   localstack:
     container_name: localstack
+    hostname: localstack
     image: localstack/localstack:latest
     environment:
       - AWS_DEFAULT_REGION=us-east-1
@@ -26,13 +27,16 @@ services:
       - SERVICES=secretmanager, ssm, sqs, s3
       - LAMBDA_EXECUTOR=docker
       - DATA_DIR=/tmp/localstack/data
-      - DEBU=1
+      - DOCKER-HOST=unix:///var/run/docker.sock
+      - DEBUG=1
     ports:
       - "4566:4566"
     networks:
       - finances
     volumes:
+      - "./init-localstack.sh:/etc/localstack/init/ready.d/init-aws.sh"  # ready hook
       - localstack-data:/tmp/localstack
+      - "/var/run/docker.sock:/var/run/docker.sock"
     restart: unless-stopped
 
   prometheus:
