@@ -7,7 +7,7 @@ import com.finances.core.usecase.expense.GetExpenseByIdUseCase
 import com.finances.core.usecase.expense.UpdateExpenseUseCase
 import com.finances.infrastructure.mapper.toModel
 import com.finances.infrastructure.mapper.toResponse
-import com.finances.infrastructure.entrypoint.dto.input.ExpenseRequest
+import com.finances.infrastructure.entrypoint.request.ExpenseRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

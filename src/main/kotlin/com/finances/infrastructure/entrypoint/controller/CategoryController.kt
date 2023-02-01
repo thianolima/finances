@@ -6,7 +6,7 @@ import com.finances.core.usecase.category.DeleteCategoryUseCase
 import com.finances.core.usecase.category.GetCategoryByIdUseCase
 import com.finances.core.usecase.category.UpdateCategoryUseCase
 import com.finances.infrastructure.mapper.toResponse
-import com.finances.infrastructure.entrypoint.dto.input.CategoryRequest
+import com.finances.infrastructure.entrypoint.request.CategoryRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

@@ -7,7 +7,7 @@ import com.finances.core.usecase.account.UpdateAccountUseCase
 import com.finances.core.usecase.bank.GetBankByIdUseCase
 import com.finances.infrastructure.mapper.toModel
 import com.finances.infrastructure.mapper.toResponse
-import com.finances.infrastructure.entrypoint.dto.input.AccountRequest
+import com.finances.infrastructure.entrypoint.request.AccountRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

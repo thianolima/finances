@@ -2,7 +2,7 @@ package com.finances.infrastructure.mapper
 
 import com.finances.core.model.Bank
 import com.finances.infrastructure.dataprovider.database.entity.BankEntity
-import com.finances.infrastructure.entrypoint.dto.output.BankResponse
+import com.finances.infrastructure.entrypoint.response.BankResponse
 
 fun BankEntity.toModel() =
     Bank(

@@ -3,8 +3,8 @@ package com.finances.infrastructure.mapper
 import com.finances.core.model.Account
 import com.finances.core.model.Bank
 import com.finances.infrastructure.dataprovider.database.entity.AccountEntity
-import com.finances.infrastructure.entrypoint.dto.input.AccountRequest
-import com.finances.infrastructure.entrypoint.dto.output.AccountResponse
+import com.finances.infrastructure.entrypoint.request.AccountRequest
+import com.finances.infrastructure.entrypoint.response.AccountResponse
 
 fun AccountEntity.toModel() =
     Account(

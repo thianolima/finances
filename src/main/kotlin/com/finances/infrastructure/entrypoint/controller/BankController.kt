@@ -6,7 +6,7 @@ import com.finances.core.usecase.bank.DeleteBankUseCase
 import com.finances.core.usecase.bank.GetBankByIdUseCase
 import com.finances.core.usecase.bank.UpdateBankUseCase
 import com.finances.infrastructure.mapper.toResponse
-import com.finances.infrastructure.entrypoint.dto.input.BankRequest
+import com.finances.infrastructure.entrypoint.request.BankRequest
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

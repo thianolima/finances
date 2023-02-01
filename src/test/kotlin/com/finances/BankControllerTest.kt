@@ -1,7 +1,6 @@
 package com.finances
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.finances.infrastructure.entrypoint.dto.input.BankRequest
+import com.finances.infrastructure.entrypoint.request.BankRequest
 import io.restassured.builder.RequestSpecBuilder
 import io.restassured.http.ContentType
 import io.restassured.module.kotlin.extensions.Given

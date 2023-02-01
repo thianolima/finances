@@ -1,4 +1,4 @@
-package com.finances.infrastructure.entrypoint.dto.input
+package com.finances.infrastructure.entrypoint.request
 
 import io.swagger.v3.oas.annotations.media.Schema
 import java.time.LocalDate

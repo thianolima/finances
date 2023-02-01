@@ -1,4 +1,4 @@
-package com.finances.infrastructure.entrypoint.dto.output
+package com.finances.infrastructure.entrypoint.response
 
 import io.swagger.v3.oas.annotations.media.Schema
 

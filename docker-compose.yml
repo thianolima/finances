@@ -35,7 +35,7 @@ services:
       - finances
     volumes:
       - "./init-localstack.sh:/etc/localstack/init/ready.d/init-aws.sh"  # ready hook
-      - localstack-data:/tmp/localstack
+      - localstack-data:/tmp/localstack/tmp
       - "/var/run/docker.sock:/var/run/docker.sock"
     restart: unless-stopped
 

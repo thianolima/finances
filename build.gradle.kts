@@ -44,8 +44,6 @@ dependencies {
 	//AWS
 //	implementation("software.amazon.awssdk:bom:2.19.20")
 //	implementation("software.amazon.awssdk:s3:2.19.20")
-//	implementation("software.amazon.awssdk:ssm:2.19.20")
-//	implementation("software.amazon.awssdk:secretsmanager:2.19.20")
 	implementation("com.amazonaws:aws-java-sdk:1.12.372")
 
 	//SPRING CLOUD AWS

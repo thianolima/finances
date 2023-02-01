@@ -4,8 +4,8 @@ import com.finances.core.model.Account
 import com.finances.core.model.Category
 import com.finances.core.model.Expense
 import com.finances.infrastructure.dataprovider.database.entity.ExpenseEntity
-import com.finances.infrastructure.entrypoint.dto.input.ExpenseRequest
-import com.finances.infrastructure.entrypoint.dto.output.ExpenseResponse
+import com.finances.infrastructure.entrypoint.request.ExpenseRequest
+import com.finances.infrastructure.entrypoint.response.ExpenseResponse
 
 fun ExpenseEntity.toModel() =
     Expense(
