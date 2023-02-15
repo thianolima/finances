@@ -22,7 +22,7 @@ class AccountRepositoryJPA(
         entityManager.merge(account.toEntity()).toModel()
 
     @Transactional
-    override fun delete(id: String)         =
+    override fun delete(id: String) =
         entityManager.remove(
             entityManager.find(AccountEntity::class.java, id)
         )

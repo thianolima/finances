@@ -1,16 +1,14 @@
 package com.finances.infrastructure.dataprovider.database.repository
 
-import com.finances.core.model.Bank
 import com.finances.core.model.Expense
-import javax.persistence.EntityManager
-import javax.persistence.PersistenceContext
 import com.finances.core.repository.ExpenseRepository
-import com.finances.infrastructure.dataprovider.database.entity.BankEntity
 import com.finances.infrastructure.dataprovider.database.entity.ExpenseEntity
 import com.finances.infrastructure.mapper.toEntity
 import com.finances.infrastructure.mapper.toModel
 import org.springframework.stereotype.Repository
 import java.util.*
+import javax.persistence.EntityManager
+import javax.persistence.PersistenceContext
 import javax.transaction.Transactional
 
 @Repository

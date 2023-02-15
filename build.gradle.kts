@@ -41,15 +41,11 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("io.micrometer:micrometer-registry-prometheus:1.10.2")
 
-	//AWS
-//	implementation("software.amazon.awssdk:bom:2.19.20")
-//	implementation("software.amazon.awssdk:s3:2.19.20")
+	//AWS-CLI PARA O LOCALSTACK
 	implementation("com.amazonaws:aws-java-sdk:1.12.372")
 
 	//SPRING CLOUD AWS
 //	implementation("io.awspring.cloud:spring-cloud-starter-aws:${property("springAwsVersion")}")
-//	implementation("io.awspring.cloud:spring-cloud-starter-aws-secrets-manager-config")
-//	implementation("io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config")
 	implementation("io.awspring.cloud:spring-cloud-aws-starter-secrets-manager")
 	implementation("io.awspring.cloud:spring-cloud-aws-starter-parameter-store")
 
