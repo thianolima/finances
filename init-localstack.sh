@@ -29,11 +29,11 @@ echo "########### Create S3 bucket ###########"
 awslocal s3api create-bucket --bucket $BUCKET_NAME --region $AWS_REGION
 
 echo "########### List S3 bucket ###########"
-aws --endpoint-url=http://localhost:4566 s3api list-buckets
+awslocal s3api list-buckets
 
 echo "########### Set S3 bucket notification configurations ###########"
 awslocal s3api put-bucket-notification-configuration\
---bucket $BUCKET_NAME\
+    --bucket $BUCKET_NAME\
     --notification-configuration  '{
                                       "QueueConfigurations": [
                                          {

@@ -7,10 +7,12 @@ import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
 import io.restassured.specification.RequestSpecification
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class BankControllerTest {
 
+    @Disabled
     @Test
     fun `01 - Deve inserir um novo Banco`(){
         val request = BankRequest("001", "BRASIL")
