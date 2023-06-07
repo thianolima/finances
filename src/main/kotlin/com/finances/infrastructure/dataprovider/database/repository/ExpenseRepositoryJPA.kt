@@ -6,6 +6,7 @@ import com.finances.infrastructure.dataprovider.database.entity.ExpenseEntity
 import com.finances.infrastructure.mapper.toEntity
 import com.finances.infrastructure.mapper.toModel
 import org.springframework.stereotype.Repository
+import java.time.LocalDate
 import java.util.*
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
@@ -54,5 +55,17 @@ class ExpenseRepositoryJPA(
             )
         val query = entityManager.createQuery(criteriaQuery)
         val resultList = query.resultList
-        return resultList.size > 0    }
+        return resultList.size > 0
+    }
+
+    override fun existsByBuyDateAndAmount(buyDate: LocalDate, amount: Double): Optional<Expense> {
+        val builder = entityManager.criteriaBuilder
+        val query = builder.createQuery(ExpenseEntity::class.java)
+        val root = query.from(ExpenseEntity::class.java)
+        val isBuyDate = builder.equal(root.get<LocalDate>("buyDate"),buyDate)
+        val isAmount =  builder.equal(root.get<Double>("amount"), amount)
+        query.where(builder.and(isBuyDate, isAmount))
+        val result = entityManager.createQuery(query.select(root)).resultList.first().toModel()
+        return Optional.of(result)
+    }
 }

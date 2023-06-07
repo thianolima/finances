@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank
 
 @Schema(description = "Dados para inserir/atualizar categorias")
 data class CategoryRequest(
-    @field:Schema(example = "Saude", nullable = false)
+    @field:Schema(example = "alimentacao", nullable = false)
     @field:NotBlank
     val name: String
 )

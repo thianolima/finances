@@ -6,25 +6,25 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 data class ExpenseRequest(
-    @field:Schema(example = "Casas Bahia", nullable = false)
+    @field:Schema(example = "coxinha de frango", nullable = false)
     @field:NotBlank
     val description: String,
 
-    @field:Schema(example = "Casas Bahia", nullable = false)
+    @field:Schema(example = "2023-06-01", nullable = false)
     @field:NotNull
     val buyDate: LocalDate,
 
-    @field:Schema(example = "Casas Bahia", nullable = false)
+    @field:Schema(example = "2023-06-01", nullable = false)
     @field:NotNull
     val dueDate: LocalDate,
 
-    @field:Schema(example = "Casas Bahia", nullable = true)
+    @field:Schema(example = "2023-06-01", nullable = true)
     val payDate: LocalDate?,
 
-    @field:Schema(example = "Boolean", nullable = true)
+    @field:Schema(example = "true", nullable = true)
     val pay: Boolean?,
 
-    @field:Schema(example = "Casas Bahia", nullable = false)
+    @field:Schema(example = "10.00", nullable = false)
     @field:NotNull
     val amount: Double,
 
