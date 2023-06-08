@@ -65,7 +65,10 @@ class ExpenseRepositoryJPA(
         val isBuyDate = builder.equal(root.get<LocalDate>("buyDate"),buyDate)
         val isAmount =  builder.equal(root.get<Double>("amount"), amount)
         query.where(builder.and(isBuyDate, isAmount))
-        val result = entityManager.createQuery(query.select(root)).resultList.first().toModel()
-        return Optional.of(result)
+        val result = entityManager.createQuery(query.select(root)).resultList
+        return when(result.isNotEmpty()) {
+            true -> Optional.of(result.first().toModel())
+            false -> Optional.empty<Expense>()
+        }
     }
 }
