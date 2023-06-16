@@ -58,7 +58,7 @@ class ExpenseRepositoryJPA(
         return resultList.size > 0
     }
 
-    override fun existsByBuyDateAndAmount(buyDate: LocalDate, amount: Double): Optional<Expense> {
+    override fun findByBuyDateAndAmount(buyDate: LocalDate, amount: Double): Optional<Expense> {
         val builder = entityManager.criteriaBuilder
         val query = builder.createQuery(ExpenseEntity::class.java)
         val root = query.from(ExpenseEntity::class.java)
@@ -70,5 +70,9 @@ class ExpenseRepositoryJPA(
             true -> Optional.of(result.first().toModel())
             false -> Optional.empty<Expense>()
         }
+    }
+
+    override fun findByDescribe(describe: String) {
+        TODO("Not yet implemented")
     }
 }

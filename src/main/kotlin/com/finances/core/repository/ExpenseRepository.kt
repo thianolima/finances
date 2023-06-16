@@ -9,5 +9,6 @@ interface ExpenseRepository {
     fun findById(id: String): Optional<Expense>
     fun existsByAccountId(idaccount: String): Boolean
     fun existsByCategoryId(idcategory: String): Boolean
-    fun existsByBuyDateAndAmount(buyDate: LocalDate, amount: Double): Optional<Expense>
+    fun findByBuyDateAndAmount(buyDate: LocalDate, amount: Double): Optional<Expense>
+    fun findByDescribe(describe: String)
 }
