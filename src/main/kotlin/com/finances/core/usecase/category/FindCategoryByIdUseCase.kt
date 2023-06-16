@@ -3,7 +3,7 @@ package com.finances.core.usecase.category
 import com.finances.core.exception.EntityNotFoundException
 import com.finances.core.repository.CategoryRepository
 
-class GetCategoryByIdUseCase(private val categoryRepository: CategoryRepository) {
+class FindCategoryByIdUseCase(private val categoryRepository: CategoryRepository) {
 
     private val MSG_NOT_FOUND = "Categoria não encontrada!"
 

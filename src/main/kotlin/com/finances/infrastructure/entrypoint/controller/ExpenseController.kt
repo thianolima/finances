@@ -1,50 +1,48 @@
 package com.finances.infrastructure.entrypoint.controller
 
-import com.finances.core.usecase.account.GetAccountByIdUseCase
-import com.finances.core.usecase.category.GetCategoryByIdUseCase
+import com.finances.core.usecase.account.FindAccountByIdUseCase
+import com.finances.core.usecase.category.FindCategoryByIdUseCase
 import com.finances.core.usecase.expense.CreateExpenseUseCase
-import com.finances.core.usecase.expense.GetExpenseByBuyDateAndAmountUseCase
-import com.finances.core.usecase.expense.GetExpenseByIdUseCase
+import com.finances.core.usecase.expense.FindExpenseByBuyDateAndAmountUseCase
+import com.finances.core.usecase.expense.FindExpenseByIdUseCase
 import com.finances.core.usecase.expense.UpdateExpenseUseCase
 import com.finances.infrastructure.mapper.toModel
 import com.finances.infrastructure.mapper.toResponse
 import com.finances.infrastructure.entrypoint.request.ExpenseRequest
 import com.finances.infrastructure.entrypoint.request.ExpenseSearchRequest
-import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.time.LocalDate
 import javax.validation.Valid
 
 @RestController
 @RequestMapping("/expenses")
 class ExpenseController(
     val createExpenseUseCase: CreateExpenseUseCase,
-    val getExpenseUseCase: GetExpenseByIdUseCase,
+    val findExpenseUseCase: FindExpenseByIdUseCase,
     val updateExpenseUseCase: UpdateExpenseUseCase,
-    val getAccountByIdUseCase: GetAccountByIdUseCase,
-    val getCategoryByIdUseCase: GetCategoryByIdUseCase,
-    val getExpenseByBuyDateAndAmountUseCase: GetExpenseByBuyDateAndAmountUseCase
+    val findAccountByIdUseCase: FindAccountByIdUseCase,
+    val findCategoryByIdUseCase: FindCategoryByIdUseCase,
+    val finfExpenseByBuyDateAndAmountUseCase: FindExpenseByBuyDateAndAmountUseCase
 ) {
     @PostMapping
     fun create(@RequestBody @Valid request: ExpenseRequest) =
         ResponseEntity(
             createExpenseUseCase.execute(
                 request.toModel(
-                    getCategoryByIdUseCase.execute(request.idcategory),
-                    getAccountByIdUseCase.execute(request.idaccount)
+                    findCategoryByIdUseCase.execute(request.idcategory),
+                    findAccountByIdUseCase.execute(request.idaccount)
                 )
             ).toResponse(), HttpStatus.CREATED
         )
 
     @GetMapping("/{id}")
     fun getById(@PathVariable id: String) =
-        ResponseEntity(getExpenseUseCase.execute(id).toResponse(), HttpStatus.OK)
+        ResponseEntity(findExpenseUseCase.execute(id).toResponse(), HttpStatus.OK)
 
     @GetMapping("/search")
     fun search(@Valid expenseSearchRequest: ExpenseSearchRequest) =
-        ResponseEntity(getExpenseByBuyDateAndAmountUseCase.execute(
+        ResponseEntity(finfExpenseByBuyDateAndAmountUseCase.execute(
             expenseSearchRequest.buyDateParse!!, expenseSearchRequest.amount), HttpStatus.OK)
 
     @PutMapping("/{id}")
@@ -53,8 +51,8 @@ class ExpenseController(
             updateExpenseUseCase.execute(
                 request.toModel(
                     id,
-                    getCategoryByIdUseCase.execute(request.idcategory),
-                    getAccountByIdUseCase.execute(request.idaccount)
+                    findCategoryByIdUseCase.execute(request.idcategory),
+                    findAccountByIdUseCase.execute(request.idaccount)
                 )
             ).toResponse(), HttpStatus.CREATED
         )

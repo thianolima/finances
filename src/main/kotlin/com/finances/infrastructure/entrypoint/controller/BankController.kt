@@ -3,7 +3,7 @@ package com.finances.infrastructure.entrypoint.controller
 import com.finances.core.model.Bank
 import com.finances.core.usecase.bank.CreateBankUseCase
 import com.finances.core.usecase.bank.DeleteBankUseCase
-import com.finances.core.usecase.bank.GetBankByIdUseCase
+import com.finances.core.usecase.bank.FindBankByIdUseCase
 import com.finances.core.usecase.bank.UpdateBankUseCase
 import com.finances.infrastructure.mapper.toResponse
 import com.finances.infrastructure.entrypoint.request.BankRequest
@@ -18,7 +18,7 @@ class BankController(
     val createUseCase: CreateBankUseCase,
     val deleteUseCase: DeleteBankUseCase,
     val updateUseCase: UpdateBankUseCase,
-    val getByIdUseCase: GetBankByIdUseCase
+    val findByIdUseCase: FindBankByIdUseCase
 ) {
     @PostMapping
     fun create(@Valid @RequestBody request: BankRequest) =
@@ -35,5 +35,5 @@ class BankController(
 
     @GetMapping("/{id}")
     fun getById(@PathVariable id: String) =
-        ResponseEntity(getByIdUseCase.execute(id).toResponse(), HttpStatus.OK)
+        ResponseEntity(findByIdUseCase.execute(id).toResponse(), HttpStatus.OK)
 }

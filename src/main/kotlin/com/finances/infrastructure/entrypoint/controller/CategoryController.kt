@@ -3,7 +3,7 @@ package com.finances.infrastructure.entrypoint.controller
 import com.finances.core.model.Category
 import com.finances.core.usecase.category.CreateCategoryUseCase
 import com.finances.core.usecase.category.DeleteCategoryUseCase
-import com.finances.core.usecase.category.GetCategoryByIdUseCase
+import com.finances.core.usecase.category.FindCategoryByIdUseCase
 import com.finances.core.usecase.category.UpdateCategoryUseCase
 import com.finances.infrastructure.mapper.toResponse
 import com.finances.infrastructure.entrypoint.request.CategoryRequest
@@ -18,7 +18,7 @@ class CategoryController(
     val createUseCase: CreateCategoryUseCase,
     val deleteUseCase: DeleteCategoryUseCase,
     val updateUseCase: UpdateCategoryUseCase,
-    val getByIdUseCase: GetCategoryByIdUseCase
+    val findByIdUseCase: FindCategoryByIdUseCase
 ) {
     @PostMapping
     fun create(@Valid @RequestBody request: CategoryRequest) =
@@ -39,5 +39,5 @@ class CategoryController(
 
     @GetMapping("/{id}")
     fun getById(@PathVariable id: String) =
-        ResponseEntity(getByIdUseCase.execute(id).toResponse(), HttpStatus.OK)
+        ResponseEntity(findByIdUseCase.execute(id).toResponse(), HttpStatus.OK)
 }

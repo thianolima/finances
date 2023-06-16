@@ -2,7 +2,7 @@ package com.finances.infrastructure.configuration.app
 
 import com.finances.core.usecase.category.CreateCategoryUseCase
 import com.finances.core.usecase.category.DeleteCategoryUseCase
-import com.finances.core.usecase.category.GetCategoryByIdUseCase
+import com.finances.core.usecase.category.FindCategoryByIdUseCase
 import com.finances.core.usecase.category.UpdateCategoryUseCase
 import com.finances.infrastructure.dataprovider.database.repository.CategoryRepositoryJPA
 import com.finances.infrastructure.dataprovider.database.repository.ExpenseRepositoryJPA
@@ -25,5 +25,5 @@ class CategoryConfiguration {
 
     @Bean
     fun getCategoryByIdUseCase(categoryRepository: CategoryRepositoryJPA) =
-        GetCategoryByIdUseCase(categoryRepository)
+        FindCategoryByIdUseCase(categoryRepository)
 }

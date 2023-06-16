@@ -2,7 +2,7 @@ package com.finances.infrastructure.configuration.app
 
 import com.finances.core.usecase.bank.CreateBankUseCase
 import com.finances.core.usecase.bank.DeleteBankUseCase
-import com.finances.core.usecase.bank.GetBankByIdUseCase
+import com.finances.core.usecase.bank.FindBankByIdUseCase
 import com.finances.core.usecase.bank.UpdateBankUseCase
 import com.finances.infrastructure.dataprovider.database.repository.AccountRepositoryJPA
 import com.finances.infrastructure.dataprovider.database.repository.BankRepositoryJPA
@@ -26,5 +26,5 @@ class BankConfiguration {
 
     @Bean
     fun getBankByIdUseCase(bankRepository: BankRepositoryJPA) =
-        GetBankByIdUseCase(bankRepository)
+        FindBankByIdUseCase(bankRepository)
 }

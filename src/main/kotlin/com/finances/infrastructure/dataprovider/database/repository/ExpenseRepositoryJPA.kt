@@ -72,7 +72,16 @@ class ExpenseRepositoryJPA(
         }
     }
 
-    override fun findByDescribe(describe: String) {
-        TODO("Not yet implemented")
+    override fun findByDescription(description: String): Optional<Expense> {
+        val builder = entityManager.criteriaBuilder
+        val query = builder.createQuery(ExpenseEntity::class.java)
+        val root = query.from(ExpenseEntity::class.java)
+        val isDescription = builder.equal(root.get<String>("description"),description)
+        query.where(builder.and(isDescription))
+        val result = entityManager.createQuery(query.select(root)).resultList
+        return when(result.isNotEmpty()) {
+            true -> Optional.of(result.first().toModel())
+            false -> Optional.empty<Expense>()
+        }
     }
 }

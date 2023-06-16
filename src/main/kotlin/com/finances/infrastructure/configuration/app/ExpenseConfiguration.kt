@@ -1,8 +1,8 @@
 package com.finances.infrastructure.configuration.app
 
 import com.finances.core.usecase.expense.CreateExpenseUseCase
-import com.finances.core.usecase.expense.GetExpenseByBuyDateAndAmountUseCase
-import com.finances.core.usecase.expense.GetExpenseByIdUseCase
+import com.finances.core.usecase.expense.FindExpenseByBuyDateAndAmountUseCase
+import com.finances.core.usecase.expense.FindExpenseByIdUseCase
 import com.finances.core.usecase.expense.UpdateExpenseUseCase
 import com.finances.infrastructure.dataprovider.database.repository.ExpenseRepositoryJPA
 import org.springframework.context.annotation.Bean
@@ -16,11 +16,11 @@ class ExpenseConfiguration {
 
     @Bean
     fun getExpenseByIdUseCase(expenseRepository: ExpenseRepositoryJPA) =
-        GetExpenseByIdUseCase(expenseRepository)
+        FindExpenseByIdUseCase(expenseRepository)
 
     @Bean
     fun getExpenseByBuyDateAndAmountUseCase(expenseRepository: ExpenseRepositoryJPA) =
-        GetExpenseByBuyDateAndAmountUseCase(expenseRepository)
+        FindExpenseByBuyDateAndAmountUseCase(expenseRepository)
 
     @Bean
     fun updateExpenseUseCase(expenseRepository: ExpenseRepositoryJPA) =

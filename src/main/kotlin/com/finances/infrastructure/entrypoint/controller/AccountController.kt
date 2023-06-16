@@ -2,9 +2,9 @@ package com.finances.infrastructure.entrypoint.controller
 
 import com.finances.core.usecase.account.CreateAccountUseCase
 import com.finances.core.usecase.account.DeleteAccountUseCase
-import com.finances.core.usecase.account.GetAccountByIdUseCase
+import com.finances.core.usecase.account.FindAccountByIdUseCase
 import com.finances.core.usecase.account.UpdateAccountUseCase
-import com.finances.core.usecase.bank.GetBankByIdUseCase
+import com.finances.core.usecase.bank.FindBankByIdUseCase
 import com.finances.infrastructure.mapper.toModel
 import com.finances.infrastructure.mapper.toResponse
 import com.finances.infrastructure.entrypoint.request.AccountRequest
@@ -17,17 +17,17 @@ import javax.validation.Valid
 @RequestMapping("/accounts")
 class AccountController(
     val createAccountUseCase: CreateAccountUseCase,
-    val getAccountByIdUseCase: GetAccountByIdUseCase,
+    val findAccountByIdUseCase: FindAccountByIdUseCase,
     val getUpdateAccountUseCase: UpdateAccountUseCase,
     val deleteAccountUseCase: DeleteAccountUseCase,
-    val getBankByIdUseCase: GetBankByIdUseCase
+    val findBankByIdUseCase: FindBankByIdUseCase
 ) {
     @PostMapping
     fun create(@RequestBody @Valid request: AccountRequest) =
         ResponseEntity(
             createAccountUseCase.execute(
                 request.toModel(
-                    getBankByIdUseCase.execute(request.idbank)
+                    findBankByIdUseCase.execute(request.idbank)
                 )
             ).toResponse(), HttpStatus.CREATED
         )
@@ -38,14 +38,14 @@ class AccountController(
             getUpdateAccountUseCase.execute(
                 request.toModel(
                     id,
-                    getBankByIdUseCase.execute(request.idbank)
+                    findBankByIdUseCase.execute(request.idbank)
                 )
             ).toResponse(), HttpStatus.OK
         )
 
     @GetMapping("/{id}")
     fun getById(@PathVariable id: String) =
-        ResponseEntity(getAccountByIdUseCase.execute(id).toResponse(), HttpStatus.OK)
+        ResponseEntity(findAccountByIdUseCase.execute(id).toResponse(), HttpStatus.OK)
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
