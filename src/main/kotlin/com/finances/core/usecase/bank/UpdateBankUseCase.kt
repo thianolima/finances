@@ -5,9 +5,11 @@ import com.finances.core.exception.EntityNotFoundException
 import com.finances.core.model.Bank
 import com.finances.core.repository.BankRepository
 
-class UpdateBankUseCase(private val bankRepository: BankRepository) {
-    private val MSG_EXISTS = "Codigo de Banco já utilizado no sistema!"
-    private val MSG_NOT_FOUND = "Banco não encontrado!"
+class UpdateBankUseCase(
+    val bankRepository: BankRepository
+) {
+    val MSG_EXISTS = "Codigo de Banco já utilizado no sistema!"
+    val MSG_NOT_FOUND = "Banco não encontrado!"
 
     fun execute(bank: Bank) =
         when (validate(bank)) {

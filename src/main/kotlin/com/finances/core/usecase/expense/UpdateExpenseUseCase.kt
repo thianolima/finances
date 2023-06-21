@@ -4,8 +4,9 @@ import com.finances.core.exception.EntityNotFoundException
 import com.finances.core.model.Expense
 import com.finances.core.repository.ExpenseRepository
 
-class UpdateExpenseUseCase (private val expenseRepository: ExpenseRepository){
-
+class UpdateExpenseUseCase(
+    val expenseRepository: ExpenseRepository
+){
     private val MSG_NOT_FOUND = "Despesa não encontrada!"
 
     fun execute(expense: Expense) =

@@ -4,9 +4,10 @@ import com.finances.core.exception.EntityNotFoundException
 import com.finances.core.model.Account
 import com.finances.core.repository.AccountRepository
 
-class UpdateAccountUseCase (private val accountRepository: AccountRepository){
-
-    private val MSG_NOT_FOUND = "Conta não encontrada!"
+class UpdateAccountUseCase (
+    val accountRepository: AccountRepository
+){
+    val MSG_NOT_FOUND = "Conta não encontrada!"
 
     fun execute(account: Account) =
         when (accountRepository.findById(account.id).isPresent) {

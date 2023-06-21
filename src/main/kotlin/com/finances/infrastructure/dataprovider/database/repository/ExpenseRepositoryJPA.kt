@@ -1,10 +1,12 @@
 package com.finances.infrastructure.dataprovider.database.repository
 
+import com.finances.core.model.Category
 import com.finances.core.model.Expense
 import com.finances.core.repository.ExpenseRepository
 import com.finances.infrastructure.dataprovider.database.entity.ExpenseEntity
 import com.finances.infrastructure.mapper.toEntity
 import com.finances.infrastructure.mapper.toModel
+import com.finances.infrastructure.mapper.toResponse
 import org.springframework.stereotype.Repository
 import java.time.LocalDate
 import java.util.*
@@ -72,16 +74,17 @@ class ExpenseRepositoryJPA(
         }
     }
 
-    override fun findByDescription(description: String): Optional<Expense> {
+    override fun findLastCategoryByDescription(description: String): Optional<Category> {
         val builder = entityManager.criteriaBuilder
         val query = builder.createQuery(ExpenseEntity::class.java)
         val root = query.from(ExpenseEntity::class.java)
         val isDescription = builder.equal(root.get<String>("description"),description)
         query.where(builder.and(isDescription))
+        query.orderBy(builder.desc(root.get<LocalDate>("buyDate")))
         val result = entityManager.createQuery(query.select(root)).resultList
         return when(result.isNotEmpty()) {
-            true -> Optional.of(result.first().toModel())
-            false -> Optional.empty<Expense>()
+            true -> Optional.of( result.first().toModel().category)
+            false -> Optional.empty<Category>()
         }
     }
 }

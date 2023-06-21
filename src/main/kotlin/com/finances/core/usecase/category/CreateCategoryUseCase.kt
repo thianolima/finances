@@ -4,9 +4,10 @@ import com.finances.core.exception.EntityAlreadyExistsException
 import com.finances.core.model.Category
 import com.finances.core.repository.CategoryRepository
 
-class CreateCategoryUseCase(private val categoryRepository: CategoryRepository) {
-
-    private val MSG_EXISTS = "Nome de Categoria já utilizada no sistema!"
+class CreateCategoryUseCase(
+    val categoryRepository: CategoryRepository
+) {
+    val MSG_EXISTS = "Nome de Categoria já utilizada no sistema!"
 
     fun execute(category: Category) =
         when (categoryRepository.existsByName(category.name)) {

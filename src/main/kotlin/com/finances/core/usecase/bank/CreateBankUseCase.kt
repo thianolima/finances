@@ -4,7 +4,9 @@ import com.finances.core.exception.EntityAlreadyExistsException
 import com.finances.core.model.Bank
 import com.finances.core.repository.BankRepository
 
-class CreateBankUseCase(private val bankRepository: BankRepository) {
+class CreateBankUseCase(
+    val bankRepository: BankRepository
+) {
 
     private val MSG_EXISTS = "Codigo de Banco já utilizada no sistema!"
 

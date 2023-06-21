@@ -6,11 +6,11 @@ import com.finances.core.repository.CategoryRepository
 import com.finances.core.repository.ExpenseRepository
 
 class DeleteCategoryUseCase(
-    private val categoryRepository: CategoryRepository,
-    private val expenseRepository: ExpenseRepository
+    val categoryRepository: CategoryRepository,
+    val expenseRepository: ExpenseRepository
 ) {
-    private val MSG_NOT_FOUND = "Categoria não encontrada!"
-    private val MSG_USING = "A Categoria esta sendo utilizado em uma ou mais despesas!"
+    val MSG_NOT_FOUND = "Categoria não encontrada!"
+    val MSG_USING = "A Categoria esta sendo utilizado em uma ou mais despesas!"
 
     fun execute(id: String) =
         when (validate(id)) {

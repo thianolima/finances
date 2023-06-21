@@ -6,11 +6,11 @@ import com.finances.core.repository.AccountRepository
 import com.finances.core.repository.ExpenseRepository
 
 class DeleteAccountUseCase(
-    private val accountRepository: AccountRepository,
-    private val expenseRepository: ExpenseRepository
+    val accountRepository: AccountRepository,
+    val expenseRepository: ExpenseRepository
 ) {
-    private val MSG_USING = "A Conta esta sendo utilizado em uma ou mais despesas!"
-    private val MSG_NOT_FOUND = "Conta não encontrada!"
+    val MSG_USING = "A Conta esta sendo utilizado em uma ou mais despesas!"
+    val MSG_NOT_FOUND = "Conta não encontrada!"
 
     fun execute(id: String) =
         when (validate(id)) {

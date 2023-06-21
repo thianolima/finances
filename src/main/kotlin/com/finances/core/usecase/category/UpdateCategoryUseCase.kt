@@ -5,9 +5,11 @@ import com.finances.core.exception.EntityNotFoundException
 import com.finances.core.model.Category
 import com.finances.core.repository.CategoryRepository
 
-class UpdateCategoryUseCase(private val categoryRepository: CategoryRepository) {
-    private val MSG_EXISTS = "Nome de categoria já utilizada no sistema!"
-    private val MSG_NOT_FOUND = "Categoria não encontrada!"
+class UpdateCategoryUseCase(
+    val categoryRepository: CategoryRepository
+) {
+    val MSG_EXISTS = "Nome de categoria já utilizada no sistema!"
+    val MSG_NOT_FOUND = "Categoria não encontrada!"
 
     fun execute(category: Category) =
         when (validate(category)) {

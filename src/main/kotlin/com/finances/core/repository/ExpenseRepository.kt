@@ -1,5 +1,6 @@
 package com.finances.core.repository
 
+import com.finances.core.model.Category
 import com.finances.core.model.Expense
 import java.time.LocalDate
 import java.util.*
@@ -10,5 +11,5 @@ interface ExpenseRepository {
     fun existsByAccountId(idaccount: String): Boolean
     fun existsByCategoryId(idcategory: String): Boolean
     fun findByBuyDateAndAmount(buyDate: LocalDate, amount: Double): Optional<Expense>
-    fun findByDescription(description: String): Optional<Expense>
+    fun findLastCategoryByDescription(description: String): Optional<Category>
 }
